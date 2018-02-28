@@ -5,8 +5,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :city
       t.string :postcode
       t.string :street
-      t.integer, :phone
-      t.8 :limit
+      t.integer :phone, limit: 8
       t.string :email
       t.references :authority, index: true, foreign_key: true
 
