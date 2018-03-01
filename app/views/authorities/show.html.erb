@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @authority.title %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @authority.name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @authority.surname %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @authority.position %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @authority.about %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @authority.dob %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @authority.sex %>
+</p>
+
+<%= link_to 'Edit', edit_authority_path(@authority) %> |
+<%= link_to 'Back', authorities_path %>

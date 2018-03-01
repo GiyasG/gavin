@@ -3,6 +3,6 @@ class Project < ActiveRecord::Base
   has_and_belongs_to_many :teams, :dependent => :destroy
   has_many :photos
 
-  validates :project_title, :presence => true
+  validates :title, :presence => true
 
 end

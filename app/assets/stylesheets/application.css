@@ -12,4 +12,180 @@
  *
  *= require_tree .
  *= require_self
+ *= require animate
  */
+
+@import 'bootstrap';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('/assets/spinner.svg');
+  background-repeat: repeat;
+
+}
+
+h2, h3, h4, span {
+ color: #005ea5;
+}
+
+h1 {
+  background: -webkit-linear-gradient(#005ea5, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
+
+a h4 {
+  color: #005ea5;
+}
+
+// .form_button {
+//   margin: auto;
+// }
+
+textarea {
+  min-width: 80%;
+  height: 200px;
+  overflow: hidden;
+}
+
+a.label-more, a.label-back {
+  padding: .2em .6em .3em;
+  font-size: 100%;
+  font-weight: bold;
+  color: #005ea5;
+  text-align: center;
+  border-radius: .25em;
+  border: 1px solid black;
+  background-color: white;
+  float: right;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+a.label-more:hover, a.label-back:hover{
+  background-color: aliceblue;
+}
+
+a.label-more:active, a.label-back:active{
+  background-color: lightblue;
+}
+
+a.label-delete, a.label-edit {
+  padding: .5em;
+  font-size: 80%;
+  font-weight: bold;
+  color: #005ea5;
+  text-align: center;
+  border-radius: .25em;
+  border: 1px solid black;
+  background-color: white;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+a.label-delete:hover, a.label-edit:hover {
+  background-color: aliceblue;
+}
+
+a.label-delete:active, a.label-edit:active {
+  background-color: lightblue;
+}
+
+hr {
+  clear: both;
+  margin-bottom: 0px;
+  border : 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+hr.panel {
+  border : 0;
+  height: 5px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+hr.well {
+  border : 0;
+  min-height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+//
+.shadow {
+  text-shadow: 1px 1px royalblue;
+}
+
+form {
+  color: black;
+}
+
+form label {
+  font-size: 1em;
+  color: black;
+  text-shadow: 0px 1px dodgerblue;
+}
+
+// form input {
+//   margin-bottom: 5px;
+// }
+
+.actions {
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+.img-thumbnail {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width:auto;
+  height: 115px;
+}
+
+.photo_show {
+  width: 80%;
+  height: auto;
+}
+
+div.fixed_warning {
+  position: fixed;
+  background-color: white;
+  box-shadow: 3px 3px 3px 3px red;
+  // z-index: auto;
+  left: 40%;
+}
+
+.footer {
+  border-top: 10px solid #005ea5;
+  padding: 10px;
+}
+
+.footer a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #005ea5;
+}
+
+.footer li {
+  list-style: none;
+  padding-top: 5px;
+}
+
+.footer h1, h2, h3, h4, h5 {
+  color: black;
+}
+
+.project, .paper, .contact, .photo, .team, .search_results {
+ overflow-y: auto;
+ overflow-x: hidden;
+ padding-bottom: 10px;
+}
+
+.bordertop {
+  border-top: 1px solid black;
+  padding-top: 5px;
+}

@@ -1,0 +1,64 @@
+<%= form_for(@authority) do |f| %>
+  <% if @authority.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@authority.errors.count, "error") %> prohibited this authority from being saved:</h2>
+
+      <ul>
+      <% @authority.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :surname %><br>
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :about %><br>
+    <%= f.text_area :about %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br>
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br>
+    <%= f.text_field :sex %>
+  </div>
+
+  <h2>Add photo</h2>
+  <%= f.fields_for :photos, @photo do |ff| %>
+
+    <% if (ff.object.authority_id).present? %>
+      <%= image_tag url_for(:controller => "photos", :action => "show",
+                            :authority_id=>ff.object.authority_id, :id=>ff.object.id),
+                            class: "col-md-3 img-thumbnail"%>
+    <% else %>
+        <div class="field">
+          <%= ff.file_field :file %><br>
+        </div>
+        <div class="field">
+          <%= ff.label :description %>
+          <%= ff.text_field :description %>
+        </div>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

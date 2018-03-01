@@ -9,7 +9,8 @@ class Photo < ActiveRecord::Base
 
   def initialize(params = {})
     @file = params.delete(:file)
-    binding.pry
+
+    # binding.pry
     super
     if @file
       self.filename = sanitize_filename(@file.original_filename)

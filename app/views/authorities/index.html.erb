@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Authorities</h1>
+    <% @authorities.each do |authority| %>
+    <div class='row animated bounceInDown'>
+      <%= image_tag url_for(:controller => "photos", :action => "show", :authority_id=>authority.id, :id=>authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
+      <%= content_tag :h2, "#{authority.title} #{authority.name} #{authority.surname}", class: "shadow"%>
+      <%= content_tag :h5, "#{authority.position}"%>
+      <%= content_tag :h5, "#{authority.about}",class:"col-md-9 text-justify"%>
+      <!-- <%= content_tag :h4, "#{authority.dob}",class:"col-md-10"%>
+      <%= content_tag :h4, "#{authority.sex}",class:"col-md-10"%> -->
+      <%= link_to 'Show', authority %>
+      <%= link_to 'Edit', edit_authority_path(authority) %>
+      <%= link_to 'Destroy', authority, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <% end %>
+
+<br>
+
+<%= link_to 'New Authority', new_authority_path %>
