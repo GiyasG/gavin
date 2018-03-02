@@ -1,4 +1,4 @@
-<%= form_for(@authority) do |f| %>
+<%= form_for(@authority, html: { multipart: true }) do |f| %>
   <% if @authority.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@authority.errors.count, "error") %> prohibited this authority from being saved:</h2>
@@ -42,11 +42,24 @@
 
   <h2>Add photo</h2>
   <%= f.fields_for :photos, @photo do |ff| %>
-
+    <% binding.pry %>
     <% if (ff.object.authority_id).present? %>
       <%= image_tag url_for(:controller => "photos", :action => "show",
                             :authority_id=>ff.object.authority_id, :id=>ff.object.id),
                             class: "col-md-3 img-thumbnail"%>
+      <div class="field">
+        <%= ff.file_field :file %><br>
+      </div>
+      <div class="field">
+          <%= ff.label :description %>
+          <%= ff.text_field :description, :value => ff.object.description %>
+      </div>
+      <!-- <%= ff.text_field :filename, :value => ff.object.filename %>
+      <%= ff.text_field :content_type, :value => ff.object.content_type %>
+      <%= ff.text_field :file_contents, :value => ff.object.file_contents %> -->
+
+
+
     <% else %>
         <div class="field">
           <%= ff.file_field :file %><br>
@@ -55,6 +68,7 @@
           <%= ff.label :description %>
           <%= ff.text_field :description %>
         </div>
+
     <% end %>
   <% end %>
 

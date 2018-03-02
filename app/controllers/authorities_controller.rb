@@ -26,13 +26,7 @@ class AuthoritiesController < ApplicationController
   # POST /authorities
   # POST /authorities.json
   def create
-    binding.pry
-    if authority_params[:photo_attributes].nil?
-      respond_to do |format|
-        format.html { render :new }
-        format.json { render json: @authority.errors, status: :unprocessable_entity }
-      end
-    end
+    # binding.pry
     @authority = Authority.new(authority_params)
     respond_to do |format|
       if @authority.save
@@ -48,12 +42,20 @@ class AuthoritiesController < ApplicationController
   # PATCH/PUT /authorities/1
   # PATCH/PUT /authorities/1.json
   def update
+
     respond_to do |format|
-      # @case_data = Photo.find(params[:authority][:photos_attributes][:"0"][:id])
-      # binding.pry
-      # @case_data.update_attributes(case_params)
+
+      # if authority_params[:photos_attributes][:filename].nil?
+      #     @authority.photos.find_by(:authority_id => params[:id]) do |t|
+      #     authority_params[:photos_attributes][:filename].original_filename = t.filename
+      #     authority_params[:photos_attributes][:filename].content_type = t.content_type
+      #     authority_params[:photos_attributes][:filename].file_contents = t.file_contents
+      #     binding.pry
+      #   end
+      # end
+
+
       if @authority.update(authority_params)
-        # binding.pry
         format.html { redirect_to @authority, notice: 'Authority was successfully updated.' }
         format.json { render :show, status: :ok, location: @authority }
       else
@@ -82,6 +84,6 @@ class AuthoritiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def authority_params
       params.require(:authority).permit(:title, :name, :surname, :position, :about, :dob, :sex,
-                     photos_attributes: [:file,:description])
+                     photos_attributes: [:file, :description, :id])
     end
 end
