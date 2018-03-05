@@ -5,10 +5,12 @@ class Photo < ActiveRecord::Base
   has_and_belongs_to_many :teams
 
   validates :description, :presence => true
-  validate :file_size_under_one_mb
+  validate :file_size_under_one_mb if @file.present?
 
   def initialize(params = {})
+    binding.pry
     @file = params.delete(:file)
+    # return if @file.nil?
 
     binding.pry
     super

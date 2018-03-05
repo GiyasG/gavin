@@ -45,14 +45,26 @@ class AuthoritiesController < ApplicationController
 
     respond_to do |format|
 
-      # if authority_params[:photos_attributes][:filename].nil?
-      #     @authority.photos.find_by(:authority_id => params[:id]) do |t|
-      #     authority_params[:photos_attributes][:filename].original_filename = t.filename
-      #     authority_params[:photos_attributes][:filename].content_type = t.content_type
-      #     authority_params[:photos_attributes][:filename].file_contents = t.file_contents
+binding.pry
+
+      # if authority_params[:photos_attributes][:"0"][:file].present?
+      #     @authority.photos.find(authority_params[:photos_attributes][:"0"][:id]) do |t|
+      #     # write_attribute(authority_params[:photos_attributes][:"0"][:file].original_filename, t.filename)
+      #     # authority_params[:photos_attributes][:"0"][:file].original_filename = t.filename
+      #     # authority_params[:photos_attributes][:"0"][:file].content_type = t.content_type
+      #     # authority_params[:photos_attributes][:"0"][:file].file_contents = t.file_contents
       #     binding.pry
       #   end
       # end
+
+      if authority_params[:photos_attributes][:"0"][:file].present?
+        params.delete(:photos_attributes)
+        binding.pry
+      #     # photo = @authority.photos.find(authority_params[:photos_attributes][:"0"][:id])
+      #     # @authority.photos << photo
+      #     photo_params = authority_params[:photos_attributes][:"0"][:file]
+      #     @authority.photos.update(photo_params)
+      end
 
 
       if @authority.update(authority_params)

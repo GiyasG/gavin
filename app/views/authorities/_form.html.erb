@@ -42,12 +42,12 @@
 
   <h2>Add photo</h2>
   <%= f.fields_for :photos, @photo do |ff| %>
-    <% binding.pry %>
     <% if (ff.object.authority_id).present? %>
       <%= image_tag url_for(:controller => "photos", :action => "show",
                             :authority_id=>ff.object.authority_id, :id=>ff.object.id),
                             class: "col-md-3 img-thumbnail"%>
       <div class="field">
+        <p><%= ff.object.filename %></p>
         <%= ff.file_field :file %><br>
       </div>
       <div class="field">
