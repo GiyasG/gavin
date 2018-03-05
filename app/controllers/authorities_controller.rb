@@ -45,8 +45,6 @@ class AuthoritiesController < ApplicationController
 
     respond_to do |format|
 
-binding.pry
-
       # if authority_params[:photos_attributes][:"0"][:file].present?
       #     @authority.photos.find(authority_params[:photos_attributes][:"0"][:id]) do |t|
       #     # write_attribute(authority_params[:photos_attributes][:"0"][:file].original_filename, t.filename)
@@ -58,12 +56,14 @@ binding.pry
       # end
 
       if authority_params[:photos_attributes][:"0"][:file].present?
-        params.delete(:photos_attributes)
+        @photo = @authority.photos.find(authority_params[:photos_attributes][:"0"][:id])
+        @photo.filename = authority_params[:photos_attributes][:"0"][:file].original_filename
+        @photo.content_type = authority_params[:photos_attributes][:"0"][:file].content_type
+        @photo.file_contents = authority_params[:photos_attributes][:"0"][:file].read
         binding.pry
-      #     # photo = @authority.photos.find(authority_params[:photos_attributes][:"0"][:id])
-      #     # @authority.photos << photo
-      #     photo_params = authority_params[:photos_attributes][:"0"][:file]
-      #     @authority.photos.update(photo_params)
+        # @authority.photos << photo
+        # photo_params = authority_params[:photos_attributes][:"0"][:file]
+        # @authority.photos.update(photo_params)
       end
 
 
