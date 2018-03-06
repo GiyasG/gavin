@@ -1,5 +1,6 @@
 class AuthoritiesController < ApplicationController
   before_action :set_authority, only: [:show, :edit, :update, :destroy]
+  before_filter :edit_authority_params, :only => [:update]
 
   # GET /authorities
   # GET /authorities.json
@@ -45,28 +46,6 @@ class AuthoritiesController < ApplicationController
 
     respond_to do |format|
 
-      # if authority_params[:photos_attributes][:"0"][:file].present?
-      #     @authority.photos.find(authority_params[:photos_attributes][:"0"][:id]) do |t|
-      #     # write_attribute(authority_params[:photos_attributes][:"0"][:file].original_filename, t.filename)
-      #     # authority_params[:photos_attributes][:"0"][:file].original_filename = t.filename
-      #     # authority_params[:photos_attributes][:"0"][:file].content_type = t.content_type
-      #     # authority_params[:photos_attributes][:"0"][:file].file_contents = t.file_contents
-      #     binding.pry
-      #   end
-      # end
-
-      if authority_params[:photos_attributes][:"0"][:file].present?
-        @photo = @authority.photos.find(authority_params[:photos_attributes][:"0"][:id])
-        @photo.filename = authority_params[:photos_attributes][:"0"][:file].original_filename
-        @photo.content_type = authority_params[:photos_attributes][:"0"][:file].content_type
-        @photo.file_contents = authority_params[:photos_attributes][:"0"][:file].read
-        binding.pry
-        # @authority.photos << photo
-        # photo_params = authority_params[:photos_attributes][:"0"][:file]
-        # @authority.photos.update(photo_params)
-      end
-
-
       if @authority.update(authority_params)
         format.html { redirect_to @authority, notice: 'Authority was successfully updated.' }
         format.json { render :show, status: :ok, location: @authority }
@@ -84,6 +63,17 @@ class AuthoritiesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to authorities_url, notice: 'Authority was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def edit_authority_params
+    if authority_params[:photos_attributes][:"0"][:file].present?
+      @photo = @authority.photos.find(authority_params[:photos_attributes][:"0"][:id])
+      @photo.filename = authority_params[:photos_attributes][:"0"][:file].original_filename
+      @photo.content_type = authority_params[:photos_attributes][:"0"][:file].content_type
+      @photo.file_contents = authority_params[:photos_attributes][:"0"][:file].read
+      @photo.save
+      params[:authority][:photos_attributes][:"0"].except!(:file)
     end
   end
 
