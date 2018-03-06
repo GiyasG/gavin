@@ -1,10 +1,9 @@
-<%= form_for(@authority, html: { multipart: true }) do |f| %>
-  <% if @authority.errors.any? %>
+<%= form_for ([@authority, @project]), :html => { :multipart => true } do |f| %>
+  <% if @project.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@authority.errors.count, "error") %> prohibited this authority from being saved:</h2>
-
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
       <ul>
-      <% @authority.errors.full_messages.each do |message| %>
+      <% @project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -16,30 +15,17 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :surname %><br>
-    <%= f.text_field :surname %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.text_field :position %>
-  </div>
-  <div class="field">
     <%= f.label :about %><br>
     <%= f.text_area :about %>
   </div>
   <div class="field">
-    <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
+    <%= f.label :started %><br>
+    <%= f.date_select :started, :order => [:day, :month, :year], :start_year => Date.today.year - 10, :end_year => Date.today.year %>
   </div>
   <div class="field">
-    <%= f.label :sex %><br>
-    <%= f.text_field :sex %>
+    <%= f.label :finished %><br>
+    <%= f.date_select :finished, :order => [:day, :month, :year], :start_year => Date.today.year + 1, :end_year => Date.today.year+10 %>
   </div>
-
   <%= f.fields_for :photos, @photo do |ff| %>
     <% if (ff.object.authority_id).present? %>
     <h2>Edit photo</h2>
@@ -68,7 +54,10 @@
     <% end %>
   <% end %>
 
+    <hr>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

@@ -1,0 +1,24 @@
+  <% @authority.projects.each do |project|%>
+<div class='row show-grid'>
+  <%= content_tag :h4, "#{project.project_title}", class: "col-md-12"%>
+  <%= image_tag project.photo.url(:small), class: "col-md-3" %>
+  <%= content_tag :h5, "#{project.project_about}", class: "col-md-9 text-justify"%>
+  <%= content_tag :h5, "Start date: #{project.started}", class: "col-md-4"%>
+  <%= content_tag :h5, "Closing date: #{project.finished}", class: "col-md-4"%>
+  <%= content_tag :h5, "URL: #{project.project_url}", class: "col-md-4"%>
+  <%= content_tag :h4, "Project team", class: "col-md-12"%>
+
+  <% project.teams.each do |c|%>
+  <div class="col-md-3">
+   <%= content_tag :h5, "#{c.team_title+' '+c.team_name+' '+c.team_surname}" %>
+  <%= link_to "Delete", authority_project_pteams_path(@authority, project, c), class: "label-edit", method: :delete %>
+  </div>
+  <% end%>
+</div>
+
+  <div class="text-center">
+    <%= link_to 'Edit', [:edit, @authority, project], class: "btn btn-default"%>
+    <%= link_to 'Delete', [@authority, project], class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <hr>
+  <% end %>

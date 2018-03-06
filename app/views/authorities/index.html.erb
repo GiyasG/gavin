@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Authorities</h1>
+<div class='row animated bounceInDown'>
     <% @authorities.each do |authority| %>
     <div class='row animated bounceInDown'>
       <%= image_tag url_for(:controller => "photos", :action => "show", :authority_id=>authority.id, :id=>authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
@@ -13,8 +13,24 @@
       <%= link_to 'Edit', edit_authority_path(authority) %>
       <%= link_to 'Destroy', authority, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
+
+    <hr id="prj" class='animated fadeInRight'>
+    <h2 class="shadow text-center animated fadeInUp">Projects</h1>
+    <div class='row'>
+    <%= render @projects %>
+    </div>
+    <div class="text-center">
+    <%= will_paginate @projects, :param_name => 'project_page' %>
+    </div>
+
+    <hr id="phts" class='animated fadeInRight'>
+
+    <h2 class="shadow text-center animated fadeInUp">Photos</h1>
+    <div class="carousel_wrap">
+    <%= render 'layouts/carousel_photos' %>
+    </div>
+
     <% end %>
 
-<br>
-
 <%= link_to 'New Authority', new_authority_path %>
+</div>

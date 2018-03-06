@@ -1,0 +1,13 @@
+    <div class='project'>
+      <%= content_tag :h4, "#{@project.project_title}", class: "col-md-12"%>
+      <%= image_tag @project.photo.url(:small), class: "img-thumbnail col-md-3" %>
+      <%= content_tag :h5, "#{@project.project_about}", class: "col-md-9 text-justify"%>
+      <%= content_tag :h5, "Start date: #{@project.started}", class: "col-md-4"%>
+      <%= content_tag :h5, "Closing date: #{@project.finished}", class: "col-md-4"%>
+      <%= content_tag :h5, "URL: #{@project.project_url}", class: "col-md-4"%>
+      <%= content_tag :h4, "Project team", class: "col-md-12"%>
+      <%= content_tag :h5, "#{@project.teams.map {|c| c.team_title+' '+c.team_name+' '+c.team_surname}.join(', ')}", class: "col-md-12" %>
+      <div>
+        <%= link_to 'Back', "/#prj", class: "label-back" %>
+      </div>
+    </div>

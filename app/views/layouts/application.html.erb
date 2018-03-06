@@ -9,9 +9,13 @@
 </head>
 
   <body>
+    <%= render 'layouts/menu'%>
 
     <div class="container">
     <%= yield %>
+        <div class="wrap">
+          <%= render 'layouts/footer'%>
+        </div>
     </div>
 
   </body>

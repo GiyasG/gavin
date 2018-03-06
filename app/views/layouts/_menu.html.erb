@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path%>">Dr. Jell's Labs</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%= root_path%>">Home</a></li>
+        <li><%= link_to "Projects", "/#prj"%></li>
+        <li><%= link_to "Papers", "/#ppr"%></li>
+        <li><%= link_to "Photos", "/#phts"%></li>
+        <li><%= link_to "Contact", "/#cnts"%></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>

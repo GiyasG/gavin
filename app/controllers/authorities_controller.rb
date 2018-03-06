@@ -7,6 +7,7 @@ class AuthoritiesController < ApplicationController
   def index
     # binding.pry
     @authorities = Authority.all
+    # @photos = @authorities.photos
   end
 
   # GET /authorities/1
