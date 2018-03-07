@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @project = @authority.projects.new(project_params)
     if @project.save
       redirect_to @authority, notice: "Project successfully added!"
@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
     # end
   end
 
-    def edit_params
+  def edit_params
     if project_params[:photos_attributes][:"0"][:file].present?
       @project = Project.find(params[:id])
       @photo = @project.photos.find(project_params[:photos_attributes][:"0"][:id])
@@ -87,8 +87,6 @@ class ProjectsController < ApplicationController
       @photo.file_contents = project_params[:photos_attributes][:"0"][:file].read
       @photo.save
       params[:project][:photos_attributes][:"0"].except!(:file)
-    else
-      @photo = @project.photos.new
     end
   end
 

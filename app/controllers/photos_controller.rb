@@ -23,6 +23,12 @@ class PhotosController < ApplicationController
                 filename: @photo.filename)
     end
 
+    def show_paper
+      @photo = Photo.find_by(:paper_id=>params[:paper_id])
+      send_data(@photo.file_contents,
+                type: @photo.content_type,
+                filename: @photo.filename)
+    end
 
     # GET /photos/new
     def new
@@ -33,7 +39,7 @@ class PhotosController < ApplicationController
     # POST /photos.json
     def create
       @photo = @authority.photos.new(photo_params)
-      binding.pry
+      # binding.pry
       respond_to do |format|
         if @photo.save
           format.html { redirect_to photos_path, notice: 'Photo was successfully created.' }

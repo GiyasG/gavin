@@ -1,7 +1,6 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <% binding.pry %>
     <% @authority.projects.each_with_index do |project, index|%>
     <li data-target="#myCarousel" data-slide-to="<%= index%>" class="<%= 'active' if index == 0%>"></li>
     <%end%>
@@ -9,7 +8,6 @@
 
   <div class="carousel-inner">
     <% @authority.projects.each_with_index do |project, index|%>
-    <% binding.pry %>
     <div class="item <%= 'active' if index == 0%>">
       <%= link_to show_project_path(project) do%>
         <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "col-md-3 img-thumbnail"%>

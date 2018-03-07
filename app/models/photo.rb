@@ -12,7 +12,7 @@ class Photo < ActiveRecord::Base
     @file = params.delete(:file)
     # return if @file.nil?
 
-    binding.pry
+    # binding.pry
     super
     if @file
       self.filename = sanitize_filename(@file.original_filename)

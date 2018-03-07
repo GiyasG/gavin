@@ -8,6 +8,7 @@ class AuthoritiesController < ApplicationController
     @authority = Authority.first
     # binding.pry
     @projects = @authority.projects
+    @papers = @authority.papers
 
     # @photos = @authorities.photos
   end

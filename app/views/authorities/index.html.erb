@@ -6,8 +6,6 @@
       <%= content_tag :h2, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "shadow"%>
       <%= content_tag :h5, "#{@authority.position}"%>
       <%= content_tag :h5, "#{@authority.about}",class:"col-md-9 text-justify"%>
-      <!-- <%= content_tag :h4, "#{@authority.dob}",class:"col-md-10"%>
-      <%= content_tag :h4, "#{@authority.sex}",class:"col-md-10"%> -->
       <%= link_to 'Show', @authority %>
       <%= link_to 'Edit', edit_authority_path(@authority) %>
       <%= link_to 'Destroy', @authority, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -17,6 +15,12 @@
     <h2 class="shadow text-center animated fadeInUp">Projects</h1>
     <div class='row'>
     <%= render @projects %>
+    </div>
+
+    <hr id="ppr" class='animated fadeInRight'>
+    <div class='row'>
+    <h2 class="shadow text-center animated fadeInUp">Papers</h1>
+    <%= render @papers %>
     </div>
 
     <hr id="phts" class='animated fadeInRight'>

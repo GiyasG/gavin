@@ -1,0 +1,15 @@
+<% @authority.papers.each do |paper|%>
+<div class='row show-grid'>
+  <%= content_tag :h4, "#{paper.title}", class: "col-md-12"%>
+  <%= image_tag url_for(:controller => "photos", :action => "show_paper", :paper_id=>paper.id), class: "col-md-3 img-thumbnail"%>
+  <%= content_tag :h5, "#{paper.description}", class: "col-md-9 text-justify"%>
+  <%= content_tag :h5, "Published: #{paper.published}", class: "col-md-4"%>
+  <%= content_tag :h5, "URL: #{paper.url}", class: "col-md-4"%>
+</div>
+
+<div class="text-center">
+  <%= link_to 'Edit', [:edit, @authority, paper], class: "btn btn-default"%>
+  <%= link_to 'Delete', [@authority, paper], class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<hr>
+<% end %>

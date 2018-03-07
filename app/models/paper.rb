@@ -5,4 +5,6 @@ class Paper < ActiveRecord::Base
 
   validates :title, :presence => true
 
+  accepts_nested_attributes_for :photos
+
 end
