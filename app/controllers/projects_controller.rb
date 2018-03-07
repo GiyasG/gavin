@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
    def show
      @project = @authority.projects.find(params[:id])
-     @team = Team.all
+     # @team = Team.all
    end
   #
   def new
@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    binding.pry
     @project = @authority.projects.new(project_params)
     if @project.save
       redirect_to @authority, notice: "Project successfully added!"
@@ -37,8 +38,6 @@ class ProjectsController < ApplicationController
 
 
   def update
-
-    respond_to do |format|
 
       @project = @authority.projects.find(params[:id])
 
@@ -54,7 +53,6 @@ class ProjectsController < ApplicationController
       else
         redirect_to @authority, alert: "Unable to update project!"
       end
-    end
 
   end
 
@@ -80,14 +78,17 @@ class ProjectsController < ApplicationController
     # end
   end
 
-  def edit_params
+    def edit_params
     if project_params[:photos_attributes][:"0"][:file].present?
-      @photo = @project.photos.find(authority_params[:photos_attributes][:"0"][:id])
-      @photo.filename = authority_params[:photos_attributes][:"0"][:file].original_filename
-      @photo.content_type = authority_params[:photos_attributes][:"0"][:file].content_type
-      @photo.file_contents = authority_params[:photos_attributes][:"0"][:file].read
+      @project = Project.find(params[:id])
+      @photo = @project.photos.find(project_params[:photos_attributes][:"0"][:id])
+      @photo.filename = project_params[:photos_attributes][:"0"][:file].original_filename
+      @photo.content_type = project_params[:photos_attributes][:"0"][:file].content_type
+      @photo.file_contents = project_params[:photos_attributes][:"0"][:file].read
       @photo.save
       params[:project][:photos_attributes][:"0"].except!(:file)
+    else
+      @photo = @project.photos.new
     end
   end
 

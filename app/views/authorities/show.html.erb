@@ -1,39 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class='authority row show-grid'>
+  <%= content_tag :h3, "#{@authority.title} #{@authority.name} #{@authority.surname}",class:"col-md-12"%>
+  <%= content_tag :h3, "#{@authority.position}",class:"col-md-12"%>
+  <%= image_tag url_for(:controller => "photos", :action => "show", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
+  <%= content_tag :h4, "#{@authority.about}",class:"col-md-9"%>
+</div>
+<div class="btn btn-default"><%= link_to 'Edit', edit_authority_path(@authority) %></div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @authority.title %>
-</p>
+<hr class='well'>
 
-<p>
-  <strong>Name:</strong>
-  <%= @authority.name %>
-</p>
+<h2 class="text-center">Projects</h1>
+<div>
+  <%= render "projects/view.html.erb" %>
+</div>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @authority.surname %>
-</p>
+<div>
+  <h2>Add new project</h1>
+  <%= form_for([@authority, @authority.projects.new]) do |f| %>
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+      <%= f.label :about %><br>
+      <%= f.text_area :about, size: "auto" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :started %><br>
+      <%= f.date_select :started, selected: Date.today, min: 5.years.ago %>
+    </div>
+    <div class="form-group">
+      <%= f.label :finished %><br>
+      <%= f.date_select :finished, selected: Date.today, min: Date.today, max: 5.years.from_now %>
+    </div>
+    <div class="form-group">
+      <%= f.label :url %><br>
+      <%= f.text_field :url %>
+    </div>
 
-<p>
-  <strong>Position:</strong>
-  <%= @authority.position %>
-</p>
+    <%= f.fields_for :photos, f.object.photos.new do |ff| %>
+      <h2>Add photo</h2>
+          <div class="field">
+            <%= ff.file_field :file %><br>
+          </div>
+          <div class="field">
+            <%= ff.label :description %>
+            <%= ff.text_field :description %>
+          </div>
+    <% end %>
 
-<p>
-  <strong>About:</strong>
-  <%= @authority.about %>
-</p>
 
-<p>
-  <strong>Dob:</strong>
-  <%= @authority.dob %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @authority.sex %>
-</p>
-
-<%= link_to 'Edit', edit_authority_path(@authority) %> |
-<%= link_to 'Back', authorities_path %>
+    <div class="actions form-group">
+      <%= f.submit "Add New Project" %>
+    </div>
+  <% end %>
+</div>

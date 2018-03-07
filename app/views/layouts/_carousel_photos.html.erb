@@ -1,20 +1,22 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <% @authority.photos.each_with_index do |photo, index|%>
+    <% binding.pry %>
+    <% @authority.projects.each_with_index do |project, index|%>
     <li data-target="#myCarousel" data-slide-to="<%= index%>" class="<%= 'active' if index == 0%>"></li>
     <%end%>
   </ol>
 
   <div class="carousel-inner">
-    <% @authority.photos.each_with_index do |photo, index|%>
+    <% @authority.projects.each_with_index do |project, index|%>
+    <% binding.pry %>
     <div class="item <%= 'active' if index == 0%>">
-      <%= link_to [@authority, photo] do%>
-      <%=  image_tag photo.photo.url(:original) %>
+      <%= link_to show_project_path(project) do%>
+        <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "col-md-3 img-thumbnail"%>
       <% end%>
 
       <div class="carousel-caption">
-        <%= content_tag :h4, "#{photo.photo_description}", class: "shadow"%>.
+        <%= content_tag :h4, "#{project.title}", class: "shadow"%>.
       </div>
     </div>
     <% end%>

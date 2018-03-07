@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, :order => [:day, :month, :year], :start_year => Date.today.year - 50, :end_year => Date.today.year - 18 %>
   </div>
   <div class="field">
     <%= f.label :sex %><br>

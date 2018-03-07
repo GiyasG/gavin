@@ -16,6 +16,14 @@ class PhotosController < ApplicationController
                 filename: @photo.filename)
     end
 
+    def show_project
+      @photo = Photo.find_by(:project_id=>params[:project_id])
+      send_data(@photo.file_contents,
+                type: @photo.content_type,
+                filename: @photo.filename)
+    end
+
+
     # GET /photos/new
     def new
       # @photo = Photo.new

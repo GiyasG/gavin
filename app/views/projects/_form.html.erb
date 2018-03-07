@@ -26,12 +26,12 @@
     <%= f.label :finished %><br>
     <%= f.date_select :finished, :order => [:day, :month, :year], :start_year => Date.today.year + 1, :end_year => Date.today.year+10 %>
   </div>
-  <%= f.fields_for :photos, @photo do |ff| %>
-    <% if (ff.object.authority_id).present? %>
+
+  <%= f.fields_for :photos, @project.photos do |ff| %>
+    <% if (ff.object).present? %>
     <h2>Edit photo</h2>
-      <%= image_tag url_for(:controller => "photos", :action => "show",
-                            :authority_id=>ff.object.authority_id, :id=>ff.object.id),
-                            class: "col-md-3 img-thumbnail"%>
+      <%= image_tag url_for(:controller => "photos", :action => "show_project",
+                            :project_id=>ff.object.project_id), class: "col-md-3 img-thumbnail"%>
       <div class="field">
         <p><%= ff.object.filename %></p>
         <%= ff.file_field :file %><br>
@@ -54,7 +54,7 @@
     <% end %>
   <% end %>
 
-    <hr>
+
 
   <div class="actions">
     <%= f.submit %>

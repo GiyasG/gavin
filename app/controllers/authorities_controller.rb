@@ -5,8 +5,10 @@ class AuthoritiesController < ApplicationController
   # GET /authorities
   # GET /authorities.json
   def index
+    @authority = Authority.first
     # binding.pry
-    @authorities = Authority.all
+    @projects = @authority.projects
+
     # @photos = @authorities.photos
   end
 

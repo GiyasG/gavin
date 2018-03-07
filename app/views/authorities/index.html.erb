@@ -1,26 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <div class='row animated bounceInDown'>
-    <% @authorities.each do |authority| %>
     <div class='row animated bounceInDown'>
-      <%= image_tag url_for(:controller => "photos", :action => "show", :authority_id=>authority.id, :id=>authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
-      <%= content_tag :h2, "#{authority.title} #{authority.name} #{authority.surname}", class: "shadow"%>
-      <%= content_tag :h5, "#{authority.position}"%>
-      <%= content_tag :h5, "#{authority.about}",class:"col-md-9 text-justify"%>
-      <!-- <%= content_tag :h4, "#{authority.dob}",class:"col-md-10"%>
-      <%= content_tag :h4, "#{authority.sex}",class:"col-md-10"%> -->
-      <%= link_to 'Show', authority %>
-      <%= link_to 'Edit', edit_authority_path(authority) %>
-      <%= link_to 'Destroy', authority, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= image_tag url_for(:controller => "photos", :action => "show", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
+      <%= content_tag :h2, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "shadow"%>
+      <%= content_tag :h5, "#{@authority.position}"%>
+      <%= content_tag :h5, "#{@authority.about}",class:"col-md-9 text-justify"%>
+      <!-- <%= content_tag :h4, "#{@authority.dob}",class:"col-md-10"%>
+      <%= content_tag :h4, "#{@authority.sex}",class:"col-md-10"%> -->
+      <%= link_to 'Show', @authority %>
+      <%= link_to 'Edit', edit_authority_path(@authority) %>
+      <%= link_to 'Destroy', @authority, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 
     <hr id="prj" class='animated fadeInRight'>
     <h2 class="shadow text-center animated fadeInUp">Projects</h1>
     <div class='row'>
     <%= render @projects %>
-    </div>
-    <div class="text-center">
-    <%= will_paginate @projects, :param_name => 'project_page' %>
     </div>
 
     <hr id="phts" class='animated fadeInRight'>
@@ -30,7 +26,8 @@
     <%= render 'layouts/carousel_photos' %>
     </div>
 
-    <% end %>
+
+
 
 <%= link_to 'New Authority', new_authority_path %>
 </div>
