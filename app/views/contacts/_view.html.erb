@@ -1,0 +1,18 @@
+<% @authority.contacts.each do |contact|%>
+<div class='text-center'>
+
+  <%= content_tag :span, "#{contact.street}"%>
+  <%= content_tag :span, "#{contact.city}"%>
+  <%= content_tag :span, "#{contact.postcode}"%>
+  <%= content_tag :span, "#{contact.country}"%>
+  <%= content_tag :span, "#{contact.phone}"%>
+  <%= content_tag :span, "#{contact.email}"%>
+</div>
+
+<div class="text-center">
+  <%= link_to 'Edit', [:edit, @authority, contact], class: "btn btn-default" %>
+  <%= link_to 'Delete', [@authority, contact], class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+
+<hr>
+<% end %>

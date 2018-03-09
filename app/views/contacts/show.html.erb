@@ -1,0 +1,10 @@
+<div class='contact'>
+  <%= content_tag :span, "#{@contact.street}"%>
+  <%= content_tag :span, "#{@contact.city}"%>
+  <%= content_tag :span, "#{@contact.postcode}"%>
+  <%= content_tag :span, "#{@contact.country}"%>
+  <%= content_tag :span, "#{@contact.phone}"%>
+  <%= content_tag :span, "#{@contact.email}"%>
+/div>
+
+<%= link_to 'Back', authorities_path %>

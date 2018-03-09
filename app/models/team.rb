@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
   validates :name, :presence => true
   validates :surname, :presence => true
 
+  accepts_nested_attributes_for :photos
+
   def name_with_initial
     "#{title} #{name} #{surname}"
   end

@@ -1,0 +1,14 @@
+<div class="team">
+<h1 class="text-center animated fadeInUp">Our people</h1>
+    <% @team.each do |team| %>
+    <div class='col-sm-2 col-md-3 col-xs-12 text-center'>
+        <%= link_to [team] do%>
+        <%= image_tag url_for(:controller => "photos", :action => "show_team", :team_id=>team.id)%>
+        <%= content_tag :h5, "#{team.title} #{team.name} #{team.surname}", class: "shadow"%>
+        <% end%>
+    </div>
+      <% end %>
+    <div class="col-md-12">
+        <%= link_to 'Back', authorities_path, class: "label-back" %>
+    </div>
+</div>

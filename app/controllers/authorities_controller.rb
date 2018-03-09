@@ -6,9 +6,15 @@ class AuthoritiesController < ApplicationController
   # GET /authorities.json
   def index
     @authority = Authority.first
+    if @authority.nil?
+      @authority = Authority.new
+      @photo = Photo.new
+      render '/authorities/new'
+    end
     # binding.pry
     @projects = @authority.projects
     @papers = @authority.papers
+    @contacts = @authority.contacts
 
     # @photos = @authorities.photos
   end

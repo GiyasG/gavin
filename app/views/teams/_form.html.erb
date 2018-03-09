@@ -1,51 +1,52 @@
-<%= form_for(@authority, html: { multipart: true }) do |f| %>
-  <% if @authority.errors.any? %>
+<%= form_for(@team) do |f| %>
+  <% if @team.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@authority.errors.count, "error") %> prohibited this authority from being saved:</h2>
+      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team member from being saved:</h2>
 
       <ul>
-      <% @authority.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @team.errors.full_messages.each do |message| %>
+        <li class="alert alert-warning"><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
+  <div class="form-group">
+    <%= f.label "Title" %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
+  <div class="form-group">
+    <%= f.label "Name" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :surname %><br>
+  <div class="form-group">
+    <%= f.label "Surname" %><br>
     <%= f.text_field :surname %>
   </div>
-  <div class="field">
-    <%= f.label :position %><br>
+  <div class="form-group">
+    <%= f.label "Position" %><br>
     <%= f.text_field :position %>
   </div>
-  <div class="field">
-    <%= f.label :about %><br>
+  <div class="form-group">
+    <%= f.label "About" %><br>
     <%= f.text_area :about %>
   </div>
-  <div class="field">
-    <%= f.label :dob %><br>
+  <div class="form-group">
+    <%= f.label "DOB" %><br>
     <%= f.date_select :dob, :order => [:day, :month, :year], :start_year => Date.today.year - 50, :end_year => Date.today.year - 18 %>
   </div>
-  <div class="field">
-    <%= f.label :sex %><br>
+  <div class="form-group">
+    <%= f.label "Sex" %><br>
     <%= f.select :sex, [@team.sex, "Male", "Female"] %>
   </div>
 
-  <%= f.fields_for :photos, @photo do |ff| %>
-    <% if (ff.object.authority_id).present? %>
+  <%= f.fields_for :photos, @team.photos do |ff| %>
+  <% binding.pry %>
+
+    <% if (ff.object.team_id).present? %>
     <h2>Edit photo</h2>
-      <%= image_tag url_for(:controller => "photos", :action => "show",
-                            :authority_id=>ff.object.authority_id, :id=>ff.object.id),
-                            class: "col-md-3 img-thumbnail"%>
+      <%= image_tag url_for(:controller => "photos", :action => "show_team",
+                            :team_id=>ff.object.team_id), class: "col-md-3 img-thumbnail"%>
       <div class="field">
         <p><%= ff.object.filename %></p>
         <%= ff.file_field :file %><br>
@@ -56,6 +57,7 @@
       </div>
 
     <% else %>
+    <% binding.pry %>
     <h2>Add photo</h2>
         <div class="field">
           <%= ff.file_field :file %><br>
@@ -68,7 +70,9 @@
     <% end %>
   <% end %>
 
+    <hr>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit"%>
   </div>
 <% end %>

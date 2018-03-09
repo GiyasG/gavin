@@ -23,6 +23,13 @@ class PhotosController < ApplicationController
                 filename: @photo.filename)
     end
 
+    def show_team
+      @photo = Team.find_by(:team_id=>params[:team_id])
+      send_data(@photo.file_contents,
+                type: @photo.content_type,
+                filename: @photo.filename)
+    end
+
     def show_paper
       @photo = Photo.find_by(:paper_id=>params[:paper_id])
       send_data(@photo.file_contents,
