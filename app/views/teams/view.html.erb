@@ -7,9 +7,9 @@
         <%= content_tag :h5, "#{team.about}", class: "col-md-9 text-justify"%>
 
         <%= link_to 'Edit', edit_team_path(team),  class: "btn btn-default" %>
-        <%= link_to 'Destroy', team_path(team),  class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Delete', team_path(team),  class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
         <%= content_tag :h5, "Contacts:", class: "col-md-12" %>
         <% end %>
       </div>
 
-    <%= link_to 'Add new team member', new_team_path, class: "btn btn-default" %>
+    <%= link_to 'Add new team member', new_team_path, class: "btn btn-primary" %>

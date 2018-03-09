@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :authorities do
     resources :photos
-    resources :projects
+    resources :projects do
+      match 'pteams/:id' => 'projects#add_delete_team', as: :pteams, via: [:delete]
+    end
     resources :papers
     resources :contacts
     # do

@@ -158,6 +158,7 @@ div.fixed_warning {
 }
 
 .footer {
+  margin-top: 10px;
   border-top: 10px solid #005ea5;
   padding: 10px;
 }

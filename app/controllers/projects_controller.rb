@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
    def show
      @project = @authority.projects.find(params[:id])
-     # @team = Team.all
+     @team = Team.all
    end
   #
   def new
@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = @authority.projects.find(params[:id])
-    # @team = Team.all
+    @team = Team.all
   end
 
   def create
@@ -41,12 +41,12 @@ class ProjectsController < ApplicationController
 
       @project = @authority.projects.find(params[:id])
 
-      # team_id = params[:project][:team_ids]
-      # check_precense = @project.teams.find_by_id(params[:project][:team_ids])
-      # if team_id and check_precense.nil?
-      #   team = Team.find(team_id)
-      #   @project.teams << team
-      # end
+      team_id = params[:project][:team_ids]
+      check_precense = @project.teams.find_by_id(params[:project][:team_ids])
+      if team_id and check_precense.nil?
+        team = Team.find(team_id)
+        @project.teams << team
+      end
 
       if @project.update_attributes(project_params) # @project.update
         redirect_to @authority, notice: "Project successfully updated!"
@@ -66,16 +66,16 @@ class ProjectsController < ApplicationController
   def add_delete_team
     @authority = Authority.find(params[:authority_id])
     @project = Project.find(params[:project_id])
-    # team = Team.find(params[:id])
-    # byebug
-    # if request.get?
-    #    @project.teams << team
-    #    redirect_to @authority, notice: "Team memeber was successfully added"
-    # elsif request.delete?
-    #     @project.teams.destroy team
-    #     # byebug
-    #     redirect_to @authority, notice: "Team memeber was successfully deleted"
-    # end
+    team = Team.find(params[:id])
+    byebug
+    if request.get?
+       @project.teams << team
+       redirect_to @authority, notice: "Team memeber was successfully added"
+    elsif request.delete?
+        @project.teams.destroy team
+        # byebug
+        redirect_to @authority, notice: "Team memeber was successfully deleted"
+    end
   end
 
   def edit_params

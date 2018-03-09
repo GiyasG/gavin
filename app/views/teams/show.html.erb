@@ -2,6 +2,8 @@
     <%= image_tag url_for(:controller => "photos", :action => "show_team", :team_id=>@team.id)%>
     <%= content_tag :h4, "#{@team.title} #{@team.name} #{@team.surname}", class: "col-md-9 text-justify"%>
     <%= content_tag :h5, "#{@team.about}", class: "col-md-9 text-justify"%>
+    <%= content_tag :h4, "Project participation:", class: "col-md-12 text-justify"%>
+    <%= content_tag :h5, "#{@team.projects.map {|k| k.project_title}.join(', ')}", class: "col-md-12" %>
     <div>
         <%= link_to 'Back', teams_path, class: "label-more" %>
     </div>

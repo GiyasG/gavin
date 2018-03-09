@@ -5,8 +5,10 @@
   <%= content_tag :h4, "#{@authority.about}",class:"col-md-9"%>
 </div>
 <div class="btn btn-default"><%= link_to 'Edit', edit_authority_path(@authority) %></div>
+<%= link_to 'Delete', @authority, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<hr class='well'>
+
+<hr class='well-sm'>
 
 <h2 class="text-center">Projects</h1>
 <div>
@@ -40,7 +42,7 @@
     <%= f.fields_for :photos, f.object.photos.new do |ff| %>
       <h2>Add photo</h2>
           <div class="field">
-            <%= ff.file_field :file %><br>
+            <%= ff.file_field :file, class: "btn btn-primary" %><br>
           </div>
           <div class="field">
             <%= ff.label :description %>
@@ -50,10 +52,11 @@
 
 
     <div class="actions form-group">
-      <%= f.submit "Add New Project" %>
+      <%= f.submit "Add New Project", class: "btn btn-primary" %>
     </div>
   <% end %>
 
+  <hr class='well-sm'>
 <!-- PAPERS -->
 
 <h2 class="text-center">Papers</h1>
@@ -84,7 +87,7 @@
     <%= f.fields_for :photos, f.object.photos.new do |ff| %>
       <h2>Add photo</h2>
           <div class="field">
-            <%= ff.file_field :file %><br>
+            <%= ff.file_field :file, class: "btn btn-primary" %><br>
           </div>
           <div class="field">
             <%= ff.label :description %>
@@ -94,11 +97,11 @@
 
 
     <div class="actions form-group">
-      <%= f.submit "Add New Paper" %>
+      <%= f.submit "Add New Paper", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <hr class='well'>
+  <hr class='well-sm'>
 
   <h2 class="text-center"> Contact</h1>
   <div>
@@ -133,7 +136,7 @@
       <%= f.text_field :email %>
     </div>
       <div class="actions">
-        <%= f.submit "Add New contact" %>
+        <%= f.submit "Add New contact", class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>

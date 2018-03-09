@@ -9,7 +9,7 @@
 
 <div class="text-center">
   <%= link_to 'Edit', [:edit, @authority, paper], class: "btn btn-default"%>
-  <%= link_to 'Delete', [@authority, paper], class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete', [@authority, paper], class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
 <hr>
 <% end %>
