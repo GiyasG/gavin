@@ -3,15 +3,13 @@
     <% @team.each do |team| %>
     <div class='row'>
         <%= image_tag url_for(:controller => "photos", :action => "show_team", :team_id=>team.id)%>
-        <%= content_tag :h5, "#{team.assets/fonts/glyphiconstitle} #{team.assets/fonts/glyphiconsname} #{team.assets/fonts/glyphiconssurname}", class: "col-md-9 text-justify"%>
-        <%= content_tag :h5, "#{team.assets/fonts/glyphiconsabout}", class: "col-md-9 text-justify"%>
+        <%= content_tag :h5, "#{team.title} #{team.name} #{team.surname}", class: "col-md-9 text-justify"%>
+        <%= content_tag :h5, "#{team.about}", class: "col-md-9 text-justify"%>
 
         <%= link_to 'Edit', edit_team_path(team),  class: "btn btn-default" %>
         <%= link_to 'Destroy', team_path(team),  class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
         <%= content_tag :h5, "Contacts:", class: "col-md-12" %>
-        <%= link_to "Add new contact", contactnew_teams_path(team), class: "label-edit" %>
-        <% end%>
+        <% end %>
       </div>
 
-    <% end %>
     <%= link_to 'Add new team member', new_team_path, class: "btn btn-default" %>

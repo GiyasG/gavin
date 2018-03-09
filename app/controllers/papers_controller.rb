@@ -99,7 +99,7 @@ class PapersController < ApplicationController
     end
 
     def paper_params
-      params.require(:paper).permit(:title, :description, :published, :url,
+      params.require(:paper).permit(:title, :description, :published, :url, :team_ids => [],
                                        photos_attributes: [:file, :description, :id])
     end
 

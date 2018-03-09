@@ -41,12 +41,11 @@
   </div>
 
   <%= f.fields_for :photos, @team.photos do |ff| %>
-  <% binding.pry %>
 
-    <% if (ff.object.team_id).present? %>
+    <% if (ff.object.id).present? %>
     <h2>Edit photo</h2>
       <%= image_tag url_for(:controller => "photos", :action => "show_team",
-                            :team_id=>ff.object.team_id), class: "col-md-3 img-thumbnail"%>
+                            :team_id=>f.object.id), class: "col-md-3 img-thumbnail"%>
       <div class="field">
         <p><%= ff.object.filename %></p>
         <%= ff.file_field :file %><br>

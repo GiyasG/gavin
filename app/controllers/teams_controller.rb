@@ -16,6 +16,11 @@ class TeamsController < ApplicationController
 
   def view
   @team = Team.all
+  if @team.nil?
+    @team = Team.new
+    @photo = Photo.new
+    render '/teams/new'
+  end
   end
 
 
@@ -90,7 +95,7 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:title, :name, :surname, :position, :about, :dob, :sex,
+      params.require(:team).permit(:title, :name, :surname, :position, :about, :dob, :sex, :projects_ids => [], :papers_ids => [], :contacts_ids => [],
                      photos_attributes: [:file, :description, :id])
     end
 end

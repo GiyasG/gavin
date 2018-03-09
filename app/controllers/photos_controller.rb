@@ -24,10 +24,14 @@ class PhotosController < ApplicationController
     end
 
     def show_team
-      @photo = Team.find_by(:team_id=>params[:team_id])
-      send_data(@photo.file_contents,
-                type: @photo.content_type,
-                filename: @photo.filename)
+      @team=Team.find(params[:team_id])
+      @photos = @team.photos
+      @photos.each do |photo|
+      # binding.pry
+      send_data(photo.file_contents,
+                type: photo.content_type,
+                filename: photo.filename)
+              end
     end
 
     def show_paper
@@ -90,7 +94,7 @@ class PhotosController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def photo_params
-        params.require(:photo).permit(:file, :description)
+        params.require(:photo).permit(:file, :description, :team_ids => [],)
       end
 
 end
