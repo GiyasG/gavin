@@ -37,15 +37,19 @@
   </div>
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.select :sex, [@team.sex, "Male", "Female"] %>
+    <%= f.select :sex, ["Male", "Female"] %>
   </div>
 
+<div class="row">
   <%= f.fields_for :photos, @photo do |ff| %>
     <% if (ff.object.authority_id).present? %>
     <h2>Edit photo</h2>
+    <div class: "col-md-2">
       <%= image_tag url_for(:controller => "photos", :action => "show",
                             :authority_id=>ff.object.authority_id, :id=>ff.object.id),
-                            class: "col-md-3 img-thumbnail"%>
+                            class: "col-md-2 img-thumbnail"%>
+    </div>
+    <div class="col-md-2">
       <div class="field">
         <p><%= ff.object.filename %></p>
         <%= ff.file_field :file %><br>
@@ -54,9 +58,11 @@
           <%= ff.label :description %>
           <%= ff.text_field :description, :value => ff.object.description %>
       </div>
+    </div>
 
     <% else %>
     <h2>Add photo</h2>
+    <div class="col-md-2">
         <div class="field">
           <%= ff.file_field :file %><br>
         </div>
@@ -64,11 +70,11 @@
           <%= ff.label :description %>
           <%= ff.text_field :description %>
         </div>
-
+      </div>
     <% end %>
   <% end %>
-
+</div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>

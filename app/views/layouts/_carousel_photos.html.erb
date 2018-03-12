@@ -10,12 +10,11 @@
     <% @authority.projects.each_with_index do |project, index|%>
     <div class="item <%= 'active' if index == 0%>">
       <%= link_to show_project_path(project) do%>
-        <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "col-md-3 img-thumbnail"%>
+        <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "col-md-6"%>
       <% end%>
-
-      <div class="carousel-caption">
-        <%= content_tag :h4, "#{project.title}", class: "shadow"%>.
-      </div>
+      <ol class="carousel-caption">
+        <%= content_tag :h4, "#{project.title}"%>
+      </ol>
     </div>
     <% end%>
   </div>

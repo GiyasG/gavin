@@ -1,10 +1,10 @@
-<div class='authority row show-grid'>
+<div class='row show-grid'>
   <%= content_tag :h3, "#{@authority.title} #{@authority.name} #{@authority.surname}",class:"col-md-12"%>
   <%= content_tag :h3, "#{@authority.position}",class:"col-md-12"%>
-  <%= image_tag url_for(:controller => "photos", :action => "show", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
+  <%= image_tag url_for(:controller => "photos", :action => "show_authority", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
   <%= content_tag :h4, "#{@authority.about}",class:"col-md-9"%>
 </div>
-<div class="btn btn-default"><%= link_to 'Edit', edit_authority_path(@authority) %></div>
+<div class="btn btn-warning"><%= link_to 'Edit', edit_authority_path(@authority) %></div>
 <%= link_to 'Delete', @authority, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 
 

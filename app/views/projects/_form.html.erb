@@ -27,11 +27,16 @@
     <%= f.date_select :finished, :order => [:day, :month, :year], :start_year => Date.today.year + 1, :end_year => Date.today.year+10 %>
   </div>
 
+  <div class="row">
   <%= f.fields_for :photos, @project.photos do |ff| %>
     <% if (ff.object).present? %>
+    <div>
     <h2>Edit photo</h2>
       <%= image_tag url_for(:controller => "photos", :action => "show_project",
                             :project_id=>ff.object.project_id), class: "col-md-3 img-thumbnail"%>
+    </div>
+
+    <div class="col-md-2">
       <div class="field">
         <p><%= ff.object.filename %></p>
         <%= ff.file_field :file, class: "btn btn-primary" %><br>
@@ -40,6 +45,7 @@
           <%= ff.label :description %>
           <%= ff.text_field :description, :value => ff.object.description %>
       </div>
+    </div>
 
     <% else %>
     <h2>Add photo</h2>
@@ -53,6 +59,7 @@
 
     <% end %>
   <% end %>
+</div>
 
   <div class="field">
   <%= f.label "Choose team member" %><br>
@@ -60,7 +67,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit"Save", class: "btn btn-primary" %>
   </div>
 
 <% end %>

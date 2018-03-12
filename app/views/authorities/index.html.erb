@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
     <div class='row animated bounceInDown'>
-      <%= image_tag url_for(:controller => "photos", :action => "show", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
-      <%= content_tag :h2, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "shadow"%>
-      <%= content_tag :h5, "#{@authority.position}"%>
-      <%= content_tag :h5, "#{@authority.about}",class:"col-md-9 text-justify"%>
+      <%= image_tag url_for(:controller => "photos", :action => "show_authority", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
+      <%= content_tag :h5, "#{@authority.about}", class:"col-md-9 text-justify"%>
+      <%= content_tag :h2, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "col-md-12 shadow"%>
+      <%= content_tag :h5, "#{@authority.position}", class:"col-md-12"%>
     </div>
 
     <hr id="prj" class='animated fadeInRight'>
-    <div class='row'>
-    <h2 class="shadow text-center animated fadeInUp">Projects</h1>
+    <div class='indexpage row'>
+    <h2 class="shadow text-center animated fadeInUp h2">Projects</h1>
     <%= render @projects %>
     </div>
 
     <hr id="ppr" class='animated fadeInRight'>
-    <div class='row'>
+    <div class='indexpage row'>
     <h2 class="shadow text-center animated fadeInUp">Papers</h1>
     <%= render @papers %>
     </div>
@@ -30,5 +30,3 @@
     <h2 class="shadow animated fadeInUp">Contact</h1>
     <%= render @contacts %>
     </div>
-
-<%= link_to 'New Authority', new_authority_path %>

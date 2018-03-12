@@ -27,11 +27,15 @@
     <%= f.text_field :url %>
   </div>
 
+  <div class="row">
   <%= f.fields_for :photos, @paper.photos do |ff| %>
     <% if (ff.object).present? %>
+    <div>
     <h2>Edit photo</h2>
       <%= image_tag url_for(:controller => "photos", :action => "show_paper",
-                            :paper_id=>ff.object.paper_id), class: "col-md-3 img-thumbnail"%>
+                            :paper_id=>ff.object.paper_id), class: "col-md-2 img-thumbnail"%>
+    </div>
+    <div class="col-md-2">
       <div class="field">
         <p><%= ff.object.filename %></p>
         <%= ff.file_field :file %><br>
@@ -40,7 +44,7 @@
           <%= ff.label :description %>
           <%= ff.text_field :description, :value => ff.object.description %>
       </div>
-
+    </div>
     <% else %>
     <h2>Add photo</h2>
         <div class="field">
@@ -53,11 +57,16 @@
 
     <% end %>
   <% end %>
+</div>
 
+  <div class="field">
+  <%= f.label "Choose co-author" %><br>
+  <%= f.collection_select 'team_ids', Team.all, :id, :name_with_initial %>
+  </div>
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
   </div>
 
 <% end %>

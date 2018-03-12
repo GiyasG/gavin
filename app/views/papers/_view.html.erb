@@ -5,10 +5,19 @@
   <%= content_tag :h5, "#{paper.description}", class: "col-md-9 text-justify"%>
   <%= content_tag :h5, "Published: #{paper.published}", class: "col-md-4"%>
   <%= content_tag :h5, "URL: #{paper.url}", class: "col-md-4"%>
+  <%= content_tag :h5, "Publishing date: #{paper.published}", class: "col-md-6"%>
+  <%= content_tag :h4, "Co-authors", class: "col-md-12"%>
+
+  <% paper.teams.each do |c|%>
+  <div class="col-md-3">
+   <%= content_tag :h5, "#{c.title+' '+c.name+' '+c.surname}" %>
+  <%= link_to "Delete", authority_paper_pteams_path(@authority, paper, c), class: "btn btn-danger", method: :delete %>
+  </div>
+  <% end%>
 </div>
 
 <div class="text-center">
-  <%= link_to 'Edit', [:edit, @authority, paper], class: "btn btn-default"%>
+  <%= link_to 'Edit', [:edit, @authority, paper], class: "btn btn-warning"%>
   <%= link_to 'Delete', [@authority, paper], class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
 <hr>

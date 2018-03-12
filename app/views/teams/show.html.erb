@@ -4,6 +4,10 @@
     <%= content_tag :h5, "#{@team.about}", class: "col-md-9 text-justify"%>
     <%= content_tag :h4, "Project participation:", class: "col-md-12 text-justify"%>
     <%= content_tag :h5, "#{@team.projects.map {|k| k.title}.join(', ')}", class: "col-md-12" %>
+    <%= content_tag :h4, "Papers participation:", class: "col-md-12 text-justify"%>
+    <%= content_tag :h5, "#{@team.papers.map {|k| k.title}.join(', ')}", class: "col-md-12" %>
+    <%= content_tag :h4, "Contacts:", class: "col-md-12 text-justify"%>
+    <%= content_tag :h5, "#{@team.contacts.map {|k| k.country}.join(', ')}", class: "col-md-12" %>
     <div>
         <%= link_to 'Back', teams_path, class: "label-more" %>
     </div>

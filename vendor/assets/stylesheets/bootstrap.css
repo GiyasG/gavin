@@ -5,6 +5,10 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+.shadow {
+  text-shadow: 1px 1px royalblue;
+}
+
 #txt1 {
 	margin-left: 280px;
 	position: absolute;
@@ -100,7 +104,7 @@ figure {
   margin: 1em 40px;
 }
 hr {
-  height: 0;
+  height: 3px;
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
           box-sizing: content-box;
@@ -6499,10 +6503,13 @@ button.close {
   background-color: #005ea5;
 }
 .carousel-caption {
-  position: unset;
+	position: absolute;
+	left: 0;
+	top: 50%;
+  /* position: unset;
   right: 15%;
   bottom: 20px;
-  left: 15%;
+  left: 15%; */
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;

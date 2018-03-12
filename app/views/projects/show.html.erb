@@ -1,4 +1,4 @@
-    <div class='project'>
+    <div class='row'>
       <%= content_tag :h4, "#{@project.title}", class: "col-md-12"%>
       <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>@project.id), class: "col-md-3 img-thumbnail"%>
       <%= content_tag :h5, "#{@project.about}", class: "col-md-9 text-justify"%>

@@ -8,11 +8,8 @@ class Photo < ActiveRecord::Base
   validate :file_size_under_one_mb if @file.present?
 
   def initialize(params = {})
-    # binding.pry
     @file = params.delete(:file)
-    # return if @file.nil?
 
-    # binding.pry
     super
     if @file
       self.filename = sanitize_filename(@file.original_filename)
@@ -20,16 +17,6 @@ class Photo < ActiveRecord::Base
       self.file_contents = @file.read
     end
   end
-
-        # def uploaded_file=(incoming_file)
-        #   self.filename = incoming_file.original_filename
-        #   self.content_type = incoming_file.content_type
-        #   self.data = incoming_file.read
-        # end
-        #
-        # def filename=(new_filename)
-        #   write_attribute("filename", sanitize_filename(new_filename))
-        # end
 
   private
 

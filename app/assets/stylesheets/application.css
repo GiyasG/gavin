@@ -25,7 +25,11 @@
 body {
   background-image: url('/assets/spinner.svg');
   background-repeat: repeat;
+  color: black;
+}
 
+h1, h2, h3, h4, h5 {
+  color: black;
 }
 
 h2, h3, h4, span {
@@ -98,7 +102,7 @@ hr {
   clear: both;
   margin-bottom: 0px;
   border : 0;
-  height: 1px;
+  height: 3px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
@@ -190,4 +194,12 @@ div.fixed_warning {
 .bordertop {
   border-top: 1px solid black;
   padding-top: 5px;
+}
+
+.indexpage img {
+width: 90%;
+}
+
+.row>h5 {
+  color: black;
 }

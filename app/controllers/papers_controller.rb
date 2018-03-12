@@ -10,7 +10,7 @@ class PapersController < ApplicationController
 
    def show
      @paper = @authority.papers.find(params[:id])
-     # @team = Team.all
+     @team = Team.all
    end
   #
   def new
@@ -20,7 +20,7 @@ class PapersController < ApplicationController
 
   def edit
     @paper = @authority.papers.find(params[:id])
-    # @team = Team.all
+    @team = Team.all
   end
 
   def create
@@ -41,12 +41,12 @@ class PapersController < ApplicationController
 
       @paper = @authority.papers.find(params[:id])
 
-      # team_id = params[:paper][:team_ids]
-      # check_precense = @paper.teams.find_by_id(params[:paper][:team_ids])
-      # if team_id and check_precense.nil?
-      #   team = Team.find(team_id)
-      #   @paper.teams << team
-      # end
+      team_id = params[:paper][:team_ids]
+      check_precense = @paper.teams.find_by_id(params[:paper][:team_ids])
+      if team_id and check_precense.nil?
+        team = Team.find(team_id)
+        @paper.teams << team
+      end
 
       if @paper.update_attributes(paper_params) # @paper.update
         redirect_to @authority, notice: "Paper successfully updated!"
@@ -66,16 +66,14 @@ class PapersController < ApplicationController
   def add_delete_team
     @authority = Authority.find(params[:authority_id])
     @paper = Project.find(params[:paper_id])
-    # team = Team.find(params[:id])
-    # byebug
-    # if request.get?
-    #    @paper.teams << team
-    #    redirect_to @authority, notice: "Team memeber was successfully added"
-    # elsif request.delete?
-    #     @paper.teams.destroy team
-    #     # byebug
-    #     redirect_to @authority, notice: "Team memeber was successfully deleted"
-    # end
+    team = Team.find(params[:id])
+    if request.get?
+       @paper.teams << team
+       redirect_to @authority, notice: "Team memeber was successfully added"
+    elsif request.delete?
+        @paper.teams.destroy team
+        redirect_to @authority, notice: "Team memeber was successfully deleted"
+    end
   end
 
     def edit_params
@@ -87,8 +85,6 @@ class PapersController < ApplicationController
       @photo.file_contents = paper_params[:photos_attributes][:"0"][:file].read
       @photo.save
       params[:paper][:photos_attributes][:"0"].except!(:file)
-    else
-      @photo = @paper.photos.new
     end
   end
 

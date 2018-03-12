@@ -1,9 +1,11 @@
-    <div class='paper'>
+    <div class='row'>
       <%= content_tag :h4, "#{@paper.title}", class: "col-md-12"%>
       <%= image_tag url_for(:controller => "photos", :action => "show_paper", :paper_id=>@paper.id), class: "col-md-3 img-thumbnail"%>
       <%= content_tag :h5, "#{@paper.description}", class: "col-md-9 text-justify"%>
       <%= content_tag :h5, "Published: #{@paper.published}", class: "col-md-4"%>
       <%= content_tag :h5, "URL: #{@paper.url}", class: "col-md-4"%>
+      <%= content_tag :h4, "Co-author", class: "col-md-12"%>
+      <%= content_tag :h5, "#{@paper.teams.map {|c| c.title+' '+c.name+' '+c.surname}.join(', ')}", class: "col-md-12" %>
       <div>
         <%= link_to 'Back', "/#prj", class: "label-back" %>
       </div>

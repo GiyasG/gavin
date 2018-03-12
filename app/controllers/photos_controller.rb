@@ -1,16 +1,23 @@
 class PhotosController < ApplicationController
-  before_action :set_authority, only: [:show, :edit, :update, :destroy]
+  before_action :set_authority, only: [:edit, :update, :destroy]
 
     # GET /photos
     # GET /photos.json
-    # def index
-    #   @photos = Photo.all
-    # end
+    def index
+      @photo = Photo.all
+    end
 
     # GET /photos/1
     # GET /photos/1.json
     def show
-      @photo = @authority.photos.find(params[:id])
+      @photo = Photo.find_by_id(params[:id])
+      send_data(@photo.file_contents,
+                type: @photo.content_type,
+                filename: @photo.filename)
+    end
+
+    def show_authority
+      @photo = Photo.find_by(:authority_id=>params[:authority_id])
       send_data(@photo.file_contents,
                 type: @photo.content_type,
                 filename: @photo.filename)
@@ -43,7 +50,7 @@ class PhotosController < ApplicationController
 
     # GET /photos/new
     def new
-      # @photo = Photo.new
+      @photo = Photo.new
     end
 
     # POST /photos
@@ -62,10 +69,21 @@ class PhotosController < ApplicationController
       end
     end
 
+    def create_photo
+      @photo = Photo.new(photo_params)
+      if @photo.save
+        redirect_to @authority, notice: "Photo successfully added!"
+      else
+        redirect_to @authority, alert: "Unable to add Photo!"
+      end
+    end
+
+
     # PATCH/PUT /photos/1
     # PATCH/PUT /photos/1.json
     def update
       respond_to do |format|
+        binding.pry
         if @photo.update(photo_params)
           format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
           format.json { head :no_content }
