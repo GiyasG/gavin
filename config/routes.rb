@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   match 'photos/:id' => "photos#show", :as => :photos_show, :via => [:get]
   match 'photos/:id/edit' => "photos#edit", :as => :photos_edit, via: [:get]
   match 'photos/:id/edit' => "photos#update", :as => :photos_update, via: [:put, :patch]
+  match 'photos/:id/delete' => "photos#destroy_standalone", :as => :photos_destroy_standalone, via: [:get, :delete]
 
   get 'teams/view' => "teams#view", :as => :view_teams
 

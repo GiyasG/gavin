@@ -113,6 +113,15 @@ class PhotosController < ApplicationController
       end
     end
 
+    def destroy_standalone
+      @photo=Photo.find(params[:id])
+      @photo.destroy
+      respond_to do |format|
+        format.html { redirect_to photos_index_path }
+        format.json { head :no_content }
+      end
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_authority

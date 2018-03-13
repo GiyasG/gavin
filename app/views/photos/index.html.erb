@@ -1,5 +1,14 @@
+<div class="row">
 <% @photos.each do |photo|%>
     <% if photo.authority_id.nil? and photo.project_id.nil? and photo.paper_id.nil? %>
-      <%= image_tag url_for(:controller => "photos", :action => "show", :id=>photo.id), class: "col-md-6"%>
+    <div class="col-md-6">
+      <%= image_tag url_for(:controller => "photos", :action => "show", :id=>photo.id), class: "col-md-6 img-rounded"%>
+      <div class="col-md-6">
+        <%= link_to "Delete", photos_destroy_standalone_path(photo), class: "btn btn-danger",
+                    :action => "destroy", data: { confirm: 'Are you sure?' } %>
+      </div>
+      <hr class="col-md-6">
+    </div>
     <% end%>
 <% end%>
+</div>
