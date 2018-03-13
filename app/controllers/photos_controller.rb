@@ -4,17 +4,18 @@ class PhotosController < ApplicationController
     # GET /photos
     # GET /photos.json
     def index
-      @photo = Photo.all
+      @photos = Photo.all
     end
 
     # GET /photos/1
     # GET /photos/1.json
     def show
-      @photo = Photo.find_by_id(params[:id])
+      @photo = Photo.find(params[:id])
       send_data(@photo.file_contents,
                 type: @photo.content_type,
                 filename: @photo.filename)
     end
+
 
     def show_authority
       @photo = Photo.find_by(:authority_id=>params[:authority_id])
@@ -78,6 +79,14 @@ class PhotosController < ApplicationController
       end
     end
 
+    def create_photo_standalone
+      @photo = Photo.new(photo_params)
+      if @photo.save
+        redirect_to photos_index_path, notice: "Photo successfully added!"
+      else
+        redirect_to photos_index_path, alert: "Unable to add Photo!"
+      end
+    end
 
     # PATCH/PUT /photos/1
     # PATCH/PUT /photos/1.json

@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
 
-  match 'photos' => "photos#index", :as => :photos, :via => [:get]
-  match 'photo/:id' => "photos#show", :as => :photos_show, :via => [:get]
+  match 'photos' => "photos#index", :as => :photos_index, :via => [:get]
   match 'photos/new' => "photos#new", :as => :photos_new, :via => [:get]
-  match 'photos/new' => "photos#create_photo", :as => :photos_teams, :via => [:post]
+  match 'photos/new' => "photos#create_photo_standalone", :as => :photos_teams, :via => [:post]
+  match 'photos/:id' => "photos#show", :as => :photos_show, :via => [:get]
   match 'photos/:id/edit' => "photos#edit", :as => :photos_edit, via: [:get]
   match 'photos/:id/edit' => "photos#update", :as => :photos_update, via: [:put, :patch]
 
-  get 'photos/index'
-  get 'photos/view'
-  get 'photos/edit'
-  get 'photos/show'
   get 'teams/view' => "teams#view", :as => :view_teams
 
   match 'teams/:id/contact_new' => "team_contacts#new", :as => :contactnew_teams, :via => [:get]

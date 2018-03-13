@@ -7,6 +7,8 @@ class Photo < ActiveRecord::Base
   validates :description, :presence => true
   validate :file_size_under_one_mb if @file.present?
 
+  scope :no_ids, -> { where('authority_id=? AND project_id=? AND paper_id=?', "nil", "nil", "nil") }
+
   def initialize(params = {})
     @file = params.delete(:file)
 
