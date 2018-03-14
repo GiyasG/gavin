@@ -1,5 +1,5 @@
 class TeamContactsController < ApplicationController
-  before_action :set_team_contacts, only: [:edit, :new, :update, :destroy]
+  before_action :ensure_login, :set_team_contacts, only: [:edit, :new, :update, :destroy]
 
   def new
     @team=Team.find(params[:id])

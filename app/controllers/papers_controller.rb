@@ -1,5 +1,6 @@
 class PapersController < ApplicationController
   before_action :set_authority, only: [:show, :create, :edit, :update, :destroy]
+  skip_before_action :ensure_login, only: [:show]
   before_filter :edit_params, :only => [:update]
 
   # def index

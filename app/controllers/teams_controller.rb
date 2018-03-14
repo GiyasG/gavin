@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  skip_before_action :ensure_login, only: [:index]
   before_filter :edit_params, :only => [:update]
 
   # GET /teams

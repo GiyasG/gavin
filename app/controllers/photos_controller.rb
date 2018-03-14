@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_authority, only: [:edit, :update, :destroy]
+  skip_before_action :ensure_login, only: [:show, :show_authority, :show_paper, :show_project, :show_team]
 
     # GET /photos
     # GET /photos.json

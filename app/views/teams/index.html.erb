@@ -4,7 +4,7 @@
     <% @teams.each do |team| %>
     <div class='col-sm-2 col-md-3 col-xs-12 text-center'>
         <%= link_to [team] do%>
-        <%= image_tag url_for(:controller => "photos", :action => "show_team", :team_id=>team.id)%>
+        <%= image_tag url_for(:controller => "photos", :action => "show_team", :team_id=>team.id), class: "col-md-6"%>
         <%= content_tag :h5, "#{team.title} #{team.name} #{team.surname}", class: "shadow"%>
         <% end%>
     </div>

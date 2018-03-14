@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Editor.destroy_all
+
+editors = Editor.create! [
+  {name: "Admin", password: "12345678"}
+]

@@ -1,5 +1,5 @@
 class AuthoritiesController < ApplicationController
-  before_action :set_authority, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_login, :set_authority, only: [:show, :new, :edit, :update, :destroy]
   before_filter :edit_authority_params, :only => [:update]
 
   # GET /authorities
@@ -15,8 +15,7 @@ class AuthoritiesController < ApplicationController
     @projects = @authority.projects
     @papers = @authority.papers
     @contacts = @authority.contacts
-
-    # @photos = @authorities.photos
+    @photos = Photo.no_ids.all
   end
 
   # GET /authorities/1

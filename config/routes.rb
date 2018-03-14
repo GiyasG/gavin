@@ -36,4 +36,8 @@ Rails.application.routes.draw do
     # end
   end
   resources :teams
+
+  resources :sessions, only: [:new, :create, :destroy]
+  get "/editor" => "sessions#new", as: "editor"
+  get "/logout" => "sessions#destroy", as: "logout"
 end

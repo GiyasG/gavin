@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228080337) do
+ActiveRecord::Schema.define(version: 20180314112206) do
 
   create_table "authorities", force: :cascade do |t|
     t.string   "title"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(version: 20180228080337) do
   add_index "contacts_teams", ["contact_id", "team_id"], name: "index_contacts_teams_on_contact_id_and_team_id", unique: true
   add_index "contacts_teams", ["contact_id"], name: "index_contacts_teams_on_contact_id"
   add_index "contacts_teams", ["team_id"], name: "index_contacts_teams_on_team_id"
+
+  create_table "editors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "papers", force: :cascade do |t|
     t.string   "title"
