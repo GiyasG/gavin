@@ -18,7 +18,6 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   gem 'pry-byebug', '~>3.4', '>=3.4.0'
   gem 'spring'
-  gem 'sqlite3'
 end
 
 group :development do
@@ -28,6 +27,7 @@ end
 group :production do
   gem 'rails_12factor'
 end
+gem 'sqlite3'
 gem 'pg', '~>0.19', '>=0.19.0'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
