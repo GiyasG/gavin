@@ -1,7 +1,7 @@
     <div class='row'>
       <%= content_tag :h4, "#{@project.title}", class: "col-md-12"%>
       <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>@project.id), class: "col-md-3 img-thumbnail"%>
-      <%= content_tag :h5, "#{@project.about}", class: "col-md-9 text-justify"%>
+      <%= simple_format(content_tag :h5, "#{@project.about}", class: "col-md-9 text-justify")%>
       <%= content_tag :h5, "Start date: #{@project.started}", class: "col-md-4"%>
       <%= content_tag :h5, "Closing date: #{@project.finished}", class: "col-md-4"%>
       <%= content_tag :h5, "URL: #{@project.url}", class: "col-md-4"%>
