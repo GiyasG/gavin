@@ -28,6 +28,6 @@ end
 group :production do
   gem 'rails_12factor'
 end
-# gem 'pg', '~>0.19', '>=0.19.0'
+gem 'pg', '~>0.19', '>=0.19.0'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
