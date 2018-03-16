@@ -7,25 +7,25 @@
       <%= content_tag :h5, "#{@authority.position}", class:"col-md-12"%>
     </div>
 
-    <hr id="prj">
+    <hr id="prj" class='animated fadeInRight'>
     <div class='indexpage row'>
     <h2 class="shadow text-center animated fadeInUp h2">Projects</h1>
     <%= render @projects %>
     </div>
 
-    <hr id="ppr">
+    <hr id="ppr" class='animated fadeInRight'>
     <div class='indexpage row'>
     <h2 class="shadow text-center animated fadeInUp">Papers</h1>
     <%= render @papers %>
     </div>
 
-    <hr id="phts">
+    <hr id="phts" class='animated fadeInRight'>
     <div class="carousel_wrap">
     <h2 class="shadow text-center animated fadeInUp">Photos</h1>
     <%= render 'layouts/carousel_photos' %>
     </div>
 
-    <hr id="cnts">
+    <hr id="cnts" class='animated fadeInRight'>
     <div class='contact text-center'>
     <h2 class="shadow animated fadeInUp">Contact</h1>
     <%= render @contacts %>
