@@ -2,7 +2,7 @@
 
     <div class='row animated bounceInDown'>
       <%= image_tag url_for(:controller => "photos", :action => "show_authority", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
-      <%= content_tag :h5, "#{@authority.about}", class:"col-md-9 text-justify"%>
+      <%= simple_format(content_tag :h5, "#{@authority.about}", class:"col-md-9 text-justify")%>
       <%= content_tag :h2, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "col-md-12 shadow"%>
       <%= content_tag :h5, "#{@authority.position}", class:"col-md-12"%>
     </div>
