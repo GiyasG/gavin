@@ -1,6 +1,6 @@
 <div class="row">
 <% @photos.each do |photo|%>
-    <% if photo.authority_id.nil? and photo.project_id.nil? and photo.paper_id.nil? %>
+    <% if photo.authority_id.nil? and photo.project_id.nil? and photo.paper_id.nil? and (photo.teams.length == 0)%>
     <div class="col-md-6">
       <%= image_tag url_for(:controller => "photos", :action => "show", :id=>photo.id), class: "col-md-6 img-rounded"%>
       <div class="col-md-6">
@@ -12,3 +12,5 @@
     <% end%>
 <% end%>
 </div>
+<%= link_to "Add new photo", photos_new_path(Photo.new), class: "btn btn-success"%>
+<%= link_to 'Back', authorities_path, class: "label-back" %>

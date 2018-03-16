@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
+
   match 'photos' => "photos#index", :as => :photos_index, :via => [:get]
   match 'photos/new' => "photos#new", :as => :photos_new, :via => [:get]
   match 'photos/new' => "photos#create_photo_standalone", :as => :photos_teams, :via => [:post]
@@ -40,4 +42,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get "/editor" => "sessions#new", as: "editor"
   get "/logout" => "sessions#destroy", as: "logout"
+
+  get '*unmatched_route', :to => 'application#raise_not_found!'
+
 end
