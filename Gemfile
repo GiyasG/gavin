@@ -28,3 +28,5 @@ gem 'rails_12factor'
 end
 
 gem 'pg', '~>0.19', '>=0.19.0'
+gem 'ckeditor', '4.1.3'
+gem 'paperclip'

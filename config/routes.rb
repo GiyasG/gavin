@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   # match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
 
   match 'photos' => "photos#index", :as => :photos_index, :via => [:get]

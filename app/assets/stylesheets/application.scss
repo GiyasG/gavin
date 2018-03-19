@@ -29,6 +29,10 @@ body {
   color: black;
 }
 
+body p {
+  color: black;
+}
+
 h1, h2, h3, h4, h5 {
   color: black;
 }
@@ -143,8 +147,9 @@ form label {
 }
 
 .img-thumbnail {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
+  // margin-top: 10px;
+  // margin-bottom: 10px;
   width:auto;
   height: 115px;
 }

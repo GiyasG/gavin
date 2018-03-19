@@ -1,7 +1,9 @@
     <div class='row'>
       <%= content_tag :h4, "#{@paper.title}", class: "col-md-12"%>
       <%= image_tag url_for(:controller => "photos", :action => "show_paper", :paper_id=>@paper.id), class: "col-md-3 img-thumbnail"%>
-      <%= simple_format(content_tag :h5, "#{@paper.description}", class: "col-md-9 text-justify")%>
+      <div class="col-md-12 text-justify">
+        <%= simple_format("#{@paper.description}", class: "text-justify")%>
+      </div>
       <%= content_tag :h5, "Published: #{@paper.published}", class: "col-md-4"%>
       <%= content_tag :h5, "URL: #{@paper.url}", class: "col-md-4"%>
       <%= content_tag :h4, "Co-author", class: "col-md-12"%>

@@ -16,7 +16,7 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.cktext_area :description, ckeditor: { uiColor: '#AADC6E', toolbar: 'medium' } %>
   </div>
   <div class="field">
     <%= f.label :published %><br>
@@ -40,6 +40,7 @@
         <p><%= ff.object.filename %></p>
         <%= ff.file_field :file %><br>
       </div>
+
       <div class="field">
           <%= ff.label :description %>
           <%= ff.text_field :description, :value => ff.object.description %>

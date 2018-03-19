@@ -2,7 +2,9 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <% @photos.each_with_index do |photo, index|%>
+    <% if photo.authority_id.nil? and photo.project_id.nil? and photo.paper_id.nil? and (photo.teams.length == 0)%>
     <li data-target="#myCarousel" data-slide-to="<%= index%>" class="<%= 'active' if index == 0%>"></li>
+    <%end%>
     <%end%>
   </ol>
 

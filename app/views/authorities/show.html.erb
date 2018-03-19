@@ -2,7 +2,9 @@
   <%= content_tag :h3, "#{@authority.title} #{@authority.name} #{@authority.surname}",class:"col-md-12"%>
   <%= content_tag :h3, "#{@authority.position}",class:"col-md-12"%>
   <%= image_tag url_for(:controller => "photos", :action => "show_authority", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-3 img-thumbnail"%>
-  <%= simple_format(content_tag :h4, "#{@authority.about}",class:"col-md-9")%>
+  <div class="col-md-12 text-justify">
+    <%= simple_format("#{@authority.about}")%>
+  </div>
 </div>
 <div class="btn btn-warning"><%= link_to 'Edit', edit_authority_path(@authority) %></div>
 <%= link_to 'Delete', @authority, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -24,7 +26,7 @@
     </div>
     <div class="form-group">
       <%= f.label :about %><br>
-      <%= f.text_area :about, size: "auto" %>
+      <%= f.cktext_area :about, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'medium' } %>
     </div>
     <div class="form-group">
       <%= f.label :started %><br>
@@ -73,7 +75,7 @@
     </div>
     <div class="form-group">
       <%= f.label :description %><br>
-      <%= f.text_area :description, size: "auto" %>
+      <%= f.cktext_area :description, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'medium' } %>
     </div>
     <div class="form-group">
       <%= f.label :published %><br>
