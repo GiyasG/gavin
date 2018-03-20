@@ -13,7 +13,7 @@
     <% @photos.each_with_index do |photo, index|%>
     <% if photo.authority_id.nil? and photo.project_id.nil? and photo.paper_id.nil? and (photo.teams.length == 0)%>
     <div class="item <%= 'active' if index == 0%>">
-      <%= image_tag url_for(:controller => "photos", :action => "show", :id=>photo.id)%>
+      <%= image_tag url_for(:controller => "photos", :action => "show", :id=>photo.id), class: "img-fit"%>
       <ol class="carousel-caption">
         <%= content_tag :h4, "#{photo.description}"%>
       </ol>

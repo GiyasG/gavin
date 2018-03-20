@@ -5,7 +5,10 @@
         <%= simple_format("#{@paper.description}", class: "text-justify")%>
       </div>
       <%= content_tag :h5, "Published: #{@paper.published}", class: "col-md-4"%>
-      <%= content_tag :h5, "URL: #{@paper.url}", class: "col-md-4"%>
+      <%= content_tag :h5, class: "col-md-4" do%>
+        <%= content_tag :spam, "URL:"%>
+        <%= link_to "http://#{@paper.url}/", "http://#{@paper.url}/", target: "_blank"%>
+      <% end%>
       <%= content_tag :h4, "Co-author", class: "col-md-12"%>
       <%= content_tag :h5, "#{@paper.teams.map {|c| c.title+' '+c.name+' '+c.surname}.join(', ')}", class: "col-md-12" %>
       <div>

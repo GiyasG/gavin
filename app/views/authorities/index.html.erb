@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+    <section>
     <div class='row animated bounceInDown'>
       <%= image_tag url_for(:controller => "photos", :action => "show_authority", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-2"%>
       <div class="col-md-10">
@@ -10,6 +11,7 @@
         <%= simple_format("#{@authority.about}")%>
       </div>
     </div>
+    </section>
 
     <hr id="phts">
     <div class="carousel_wrap">
@@ -18,15 +20,19 @@
     </div>
 
     <hr id="prj">
-    <section class='indexpage row'>
+    <section>
       <h2 class="shadow text-center animated fadeInUp h2">Projects</h1>
-      <%= render @projects %>
+        <div class='row'>
+          <%= render @projects %>
+        </div>
     </section>
 
     <hr id="ppr">
     <section class='indexpage row'>
     <h2 class="shadow text-center animated fadeInUp">Papers</h1>
-    <%= render @papers %>
+      <div class='row'>
+        <%= render @papers %>
+      </div>
     </section>
 
     <hr id="cnts">
