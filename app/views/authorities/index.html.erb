@@ -11,26 +11,26 @@
       </div>
     </div>
 
-    <hr id="prj">
-    <div class='indexpage row'>
-    <h2 class="shadow text-center animated fadeInUp h2">Projects</h1>
-    <%= render @projects %>
-    </div>
-
-    <hr id="ppr">
-    <div class='indexpage row'>
-    <h2 class="shadow text-center animated fadeInUp">Papers</h1>
-    <%= render @papers %>
-    </div>
-
     <hr id="phts">
     <div class="carousel_wrap">
-    <h2 class="shadow text-center animated fadeInUp">Photos</h1>
+    <h2 class="shadow text-center animated fadeInUp"></h1>
     <%= render 'layouts/carousel_photos' %>
     </div>
 
+    <hr id="prj">
+    <section class='indexpage row'>
+      <h2 class="shadow text-center animated fadeInUp h2">Projects</h1>
+      <%= render @projects %>
+    </section>
+
+    <hr id="ppr">
+    <section class='indexpage row'>
+    <h2 class="shadow text-center animated fadeInUp">Papers</h1>
+    <%= render @papers %>
+    </section>
+
     <hr id="cnts">
-    <div class='contact text-center'>
+    <section class='contact text-center'>
     <h2 class="shadow animated fadeInUp">Contact</h1>
     <%= render @contacts %>
-    </div>
+    </section>
