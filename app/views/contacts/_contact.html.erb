@@ -1,6 +1,15 @@
     <%= content_tag :span, "#{contact.street}"%>
+<div>
     <%= content_tag :span, "#{contact.city}"%>
     <%= content_tag :span, "#{contact.postcode}"%>
+</div>
+<div>
     <%= content_tag :span, "#{contact.country}"%>
-    <%= content_tag :span, "#{contact.phone}"%>
-    <%= mail_to ("#{contact.email}")%>
+</div>
+<div>
+    <%= content_tag :span, "Phone: #{contact.phone}"%>
+    <%= content_tag :span do%>
+      <%= content_tag :span, "Email:" %>
+      <%= mail_to ("#{contact.email}") %>
+    <% end%>
+  </div>
