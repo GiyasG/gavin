@@ -5,14 +5,20 @@ class ApplicationController < ActionController::Base
   before_action :ensure_login
   helper_method :logged_in?
 
-  unless Rails.application.config.consider_all_requests_local
+  # unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_error
     rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
     rescue_from ActionController::RoutingError, :with => :render_not_found
-  end
+  # end
   #called by last route matching unmatched routes.  Raises RoutingError which will be rescued from in the same way as other exceptions.
    def raise_not_found!
-     raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
+     respond_to do |f|
+       f.html { redirect_to authorities_url }
+       # f.html { redirect_to authorities_url, notice: 'No such a record' }
+       # f.html{ render :template => "errors/404", :status => 404 }
+       f.js{ render :partial => "errors/ajax_404", :status => 404 }
+     # raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
+   end
    end
 
    #render 500 error

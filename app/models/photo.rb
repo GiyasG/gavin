@@ -14,9 +14,14 @@ class Photo < ActiveRecord::Base
 
     super
     if @file
+
+      @image = MiniMagick::Image.open(@file.path)
+      @image.resize "350x350"
+
       self.filename = sanitize_filename(@file.original_filename)
       self.content_type = @file.content_type
-      self.file_contents = @file.read
+      self.file_contents = @image.to_blob
+      # binding.pry
     end
   end
 

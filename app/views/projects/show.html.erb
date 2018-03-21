@@ -6,7 +6,10 @@
       </div>
       <%= content_tag :h5, "Start date: #{@project.started}", class: "col-md-4"%>
       <%= content_tag :h5, "Closing date: #{@project.finished}", class: "col-md-4"%>
-      <%= content_tag :h5, "URL: #{@project.url}", class: "col-md-4"%>
+      <%= content_tag :h5, class: "col-md-4" do%>
+        <%= content_tag :spam, "URL:"%>
+        <%= link_to "http://#{@project.url}/", "http://#{@project.url}/", target: "_blank"%>
+      <% end%>
       <%= content_tag :h4, "Project team", class: "col-md-12"%>
       <%= content_tag :h5, "#{@project.teams.map {|c| c.title+' '+c.name+' '+c.surname}.join(', ')}", class: "col-md-12" %>
       <div>
