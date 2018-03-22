@@ -1,9 +1,7 @@
 <div class='team row'>
     <%= image_tag url_for(:controller => "photos", :action => "show_team", :team_id=>@team.id), class: "col-md-3"%>
     <%= content_tag :h4, "#{@team.title} #{@team.name} #{@team.surname}", class: "col-md-9 text-justify"%>
-    <div class="col-md-12 text-justify">
-      <%= simple_format("#{@team.about}", class: "col-md-9 text-justify")%>
-    </div>
+    <%= simple_format("#{@team.about}")%>
     <%= content_tag :h4, "Project participation:", class: "col-md-12 text-justify"%>
     <%= content_tag :h5, "#{@team.projects.map {|k| k.title}.join("\n\n")}", class: "col-md-12" %>
     <%= content_tag :h4, "Papers participation:", class: "col-md-12 text-justify"%>

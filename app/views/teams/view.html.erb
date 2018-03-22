@@ -3,8 +3,8 @@
     <% @team.each do |team| %>
     <div class='row'>
         <%= image_tag url_for(:controller => "photos", :action => "show_team", :team_id=>team.id), class: "col-md-3"%>
-        <%= content_tag :h5, "#{team.title} #{team.name} #{team.surname}", class: "col-md-9 text-justify"%>
-        <%= content_tag :h5, "#{team.about}", class: "col-md-9 text-justify"%>
+        <%= content_tag :h4, "#{team.title} #{team.name} #{team.surname}", class: "col-md-9 text-justify"%>
+        <%= simple_format("#{team.about}")%>
 
         <%= link_to 'Edit', edit_team_path(team),  class: "btn btn-warning" %>
         <%= link_to 'Delete', team_path(team),  class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>

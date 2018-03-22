@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-    <section>
-    <div class='row animated bounceInDown'>
+    <section class="row">
+    <div class='animated bounceInDown'>
       <%= image_tag url_for(:controller => "photos", :action => "show_authority", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-2"%>
       <div class="col-md-10">
-      <%= content_tag :h3, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "col-md-12 shadow"%>
+      <%= content_tag :h4, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "col-md-12"%>
       <%= content_tag :h5, "#{@authority.position}", class:"col-md-12"%>
       </div>
       <div class="col-md-12 text-justify">
@@ -13,30 +13,27 @@
     </div>
     </section>
 
-    <hr id="phts">
+    <section id="phts" class="row">
     <div class="carousel_wrap">
-    <h2 class="shadow text-center animated fadeInUp"></h1>
     <%= render 'layouts/carousel_photos' %>
     </div>
+    </section>
 
-    <hr id="prj">
-    <section>
-      <h2 class="shadow text-center animated fadeInUp h2">Projects</h1>
+    <section id="prj" class="row">
+      <h3 class="text-center animated fadeInUp">Projects</h3>
         <div class='row'>
           <%= render @projects %>
         </div>
     </section>
 
-    <hr id="ppr">
-    <section class='indexpage row'>
-    <h2 class="shadow text-center animated fadeInUp">Papers</h1>
+    <section id="ppr" class='indexpage row'>
+    <h3 class="text-center animated fadeInUp">Papers</h3>
       <div class='row'>
         <%= render @papers %>
       </div>
     </section>
 
-    <hr id="cnts">
-    <section class='contact text-center'>
-    <h2 class="shadow animated fadeInUp">Contact</h1>
+    <section id="cnts" class='row text-center'>
+    <h4 class="animated fadeInUp">Contact</h4>
     <%= render @contacts %>
     </section>

@@ -1,6 +1,6 @@
     <%= link_to [@authority, project] do%>
     <div class="col-md-3 col-sm-6 text-center">
-      <%= content_tag :h5, "#{project.title}", class: "shadow"%>
+      <%= content_tag :h5, "#{project.title}"%>
       <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "img-fit img-rounded"%>
     </div>
     <% end %>
