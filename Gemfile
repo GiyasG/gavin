@@ -16,7 +16,7 @@ gem 'animate-rails'
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
-  gem 'pry'
+  gem 'pry-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'

@@ -7,4 +7,8 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :photos
 
+  def self.search(search)
+    where("title LIKE ? or about LIKE ?", "%#{search}%", "%#{search}%")
+  end
+
 end

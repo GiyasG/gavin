@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   # unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, :with => :render_error
+    # rescue_from Exception, :with => :render_error
     rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
     rescue_from ActionController::RoutingError, :with => :render_not_found
   # end
@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
    #render 500 error
    def render_error(e)
      respond_to do |f|
-       f.html{ render :template => "errors/500", :status => 500 }
-       f.js{ render :partial => "errors/ajax_500", :status => 500 }
+       f.html{ render :template => "assets/500", :status => 500 }
+       f.js{ render :partial => "assets/ajax_500", :status => 500 }
      end
    end
 
