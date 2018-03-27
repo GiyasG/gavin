@@ -62,7 +62,7 @@
 
   <div class="field">
   <%= f.label "Choose co-author" %><br>
-  <%= f.collection_select 'team_ids', Team.all, :id, :name_with_initial %>
+  <%= f.collection_select 'team_ids', Team.all, :id, :name_with_initial, :include_blank => true %>
   </div>
 
 

@@ -68,13 +68,11 @@ class ProjectsController < ApplicationController
     @authority = Authority.find(params[:authority_id])
     @project = Project.find(params[:project_id])
     team = Team.find(params[:id])
-    byebug
     if request.get?
        @project.teams << team
        redirect_to @authority, notice: "Team memeber was successfully added"
     elsif request.delete?
         @project.teams.destroy team
-        # byebug
         redirect_to @authority, notice: "Team memeber was successfully deleted"
     end
   end
