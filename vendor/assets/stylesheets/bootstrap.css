@@ -6523,6 +6523,8 @@ button.close {
 .carousel-caption .btn {
   text-shadow: none;
 }
+
+
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicon-chevron-left,
   .carousel-control .glyphicon-chevron-right,
@@ -6550,6 +6552,29 @@ button.close {
     bottom: 20px;
   }
 }
+
+@media only screen
+    and (device-width : 375px)
+    and (device-height : 667px)
+    and (-webkit-device-pixel-ratio : 2) {
+      .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+          display: block;
+          max-width: 50%;
+          height: 150px;
+      }
+     }
+
+     @media only screen
+         and (device-width : 360px)
+         and (device-height : 640px)
+         and (-webkit-device-pixel-ratio : 3) {
+           .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+               display: block;
+               max-width: 50%;
+               height: 150px;
+           }
+          }
+
 .clearfix:before,
 .clearfix:after,
 .dl-horizontal dd:before,

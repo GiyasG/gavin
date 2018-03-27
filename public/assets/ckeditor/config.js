@@ -9,5 +9,7 @@ CKEDITOR.editorConfig = function (config) {
   // ... rest of the original config.js  ...
   config.enterMode = CKEDITOR.ENTER_BR;
   config.autoParagraph = false;
+  config.removePlugins = 'magicline';
+  config.ignoreEmptyParagraph = false;
 }
 ;
