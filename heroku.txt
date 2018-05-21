@@ -1,0 +1,60 @@
+If you haven't already, log in to your Heroku account and follow the prompts to create a new SSH public key.
+
+$ heroku login
+Clone the repository
+
+Use Git to clone search-coursera-jhu-giyas's source code to your local machine.
+
+$ heroku git:clone -a search-coursera-jhu-giyas
+$ cd search-coursera-jhu-giyas
+Deploy your changes
+
+Make some changes to the code you just cloned and deploy them to Heroku using Git.
+
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
+
+
+*--------------------------*
+HEROKU
+g.g.giyas@gmail.com
+hSS2017gg
+HEROKU console: giyas - hSS2017gg
+
+Commands:
+heroku login
+heroku create /* greate URL */
+git push heroku master
+heroku run rake db:migrate
+heroku run rake db:seed
+heroku run rails console
+Login.create! identification: "SOME_USERNAME", password: "SOME_PASSWORD",  password_confirmation: "SOME_PASSWORD"
+
+Create a heroku app
+heroku create recipefinder-<a-random-number>
+Set an environment variable by running
+heroku config:set FOOD2FORK_KEY=<your-api-key>
+Add the following to your Gemfile:
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+a. Find where gem 'sqlite3' is on Gemfile and move it to a group, like the following: group :development, :test do gem 'sqlite3' end
+
+b. Run bundle --without production
+
+NOTE: You should not make changes on Gemfile before submitting your work to be graded. Consider deploying your app to Heroku after you pass the assignment.
+
+If you have not yet done so, initialize and commit to git:
+heroku login
+git status
+git init
+git add .
+git commit -m "initial commit"
+heroku git:remote -a dr-gavin-jell
+git push heroku master
+
+Migrate your database: heroku run rake db:migrate
+
+Visit you application! heroku open
