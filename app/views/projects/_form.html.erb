@@ -32,6 +32,11 @@
     <%= f.text_field :url %>
   </div>
 
+  <div class="field">
+    <%= f.label "Is current:  " %>
+    <%= f.check_box :current %>
+  </div>
+
   <div class="row">
   <%= f.fields_for :photos, @project.photos do |ff| %>
     <% if (ff.object).present? %>

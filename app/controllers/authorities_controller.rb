@@ -16,6 +16,8 @@ class AuthoritiesController < ApplicationController
     @papers = @authority.papers
     @contacts = @authority.contacts
     @photos = Photo.no_ids.all
+    @currents = @authority.projects.where("current = ?", true)
+    # binding.pry
   end
 
   # GET /authorities/1

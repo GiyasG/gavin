@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319095629) do
+ActiveRecord::Schema.define(version: 20180521115042) do
 
   create_table "authorities", force: :cascade do |t|
     t.string   "title"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20180319095629) do
     t.integer  "authority_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.boolean  "current"
   end
 
   add_index "projects", ["authority_id"], name: "index_projects_on_authority_id"

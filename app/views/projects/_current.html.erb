@@ -1,0 +1,27 @@
+  <% @currents.each do |current| %>
+
+      <%= link_to [@authority, current] do %>
+
+      <h3 class="text-center animated fadeInUp"><%= "#{current.title}"%> project</h3>
+
+          <div class="col-md-12 col-sm-12 text-left">
+            <div class="col-md-4 col-sm-2 text-center">
+              <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>current.id), class: "img-fit img-rounded"%>
+            </div>
+
+            <div class="col-md-8 col-sm-10 text-justify">
+              <%= simple_format("#{current.about.split("\n", 2)[0]}", class: "text-justify")%>
+            </div>
+
+
+            <%= content_tag :h5, "Start date: #{current.started}, Expected closing date: #{current.finished}", class: "col-md-12 "%>
+            <%= content_tag :h5, class: "col-md-12" do%>
+              <%= content_tag :spam, "URL:"%>
+              <%= link_to "http://#{current.url}/", "http://#{current.url}/", target: "_blank"%>
+            <% end%>
+            <%= content_tag :h5, "Project team: #{current.teams.map {|c| c.title+' '+c.name+' '+c.surname}.join(', ')}", class: "col-md-12"%>
+
+          </div>
+      <%end%>
+
+  <%end%>

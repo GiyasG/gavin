@@ -19,6 +19,12 @@
     </div>
     </section>
 
+    <section id="curt" class="row">
+        <div class='row'>
+          <%= render 'projects/current' %>
+        </div>
+    </section>
+
     <section id="prj" class="row">
       <h3 class="text-center animated fadeInUp">Projects</h3>
         <div class='row'>
@@ -36,4 +42,28 @@
     <section id="cnts" class='row text-center'>
     <h4 class="animated fadeInUp">Contact</h4>
     <%= render @contacts %>
-    </section>
+
+  </section>
+
+ <section>
+    <div class="col-md-10 col-md-offset-1">
+    <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
+      <div class="carousel-inner">
+
+        <% @projects.each_with_index do |project, index| %>
+        <div class="item <%= 'active' if index == 0%>">
+           <%= content_tag :div, id: "cpt_#{project.id}", class: "col-xs-12 col-sm-6 col-md-2 text-center well-br" do %>
+                <%= link_to [@authority, project]  do%>
+                <%= content_tag :h5, "#{project.title}"%>
+                <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "img-fit img-rounded"%>
+                <% end %>
+            <% end %>
+        </div>
+        <% end %>
+
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+    </div>
+    </div>
+  </section>
