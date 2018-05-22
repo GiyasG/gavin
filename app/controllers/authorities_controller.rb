@@ -12,7 +12,7 @@ class AuthoritiesController < ApplicationController
       render '/authorities/new'
     end
     # binding.pry
-    @projects = @authority.projects
+    @projects = @authority.projects.order(:title).page(params[:page] || 1).per(4)
     @papers = @authority.papers
     @contacts = @authority.contacts
     @photos = Photo.no_ids.all

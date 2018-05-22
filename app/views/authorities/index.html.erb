@@ -25,27 +25,14 @@
         </div>
     </section>
 
-    <section id="prj" class="row">
-      <h3 class="text-center animated fadeInUp">Projects</h3>
-      <div class="col-md-10 col-md-offset-1">
-      <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel4">
-        <div id="crl_inner" class="carousel-inner">
 
-          <% @projects.each_with_index do |project, index| %>
-          <div class="item <%= 'active' if index == 0%>">
-             <%= content_tag :div, id: "cpt_#{project.id}", class: "col-xs-12 col-sm-6 col-md-2 text-center well-br" do %>
-                  <%= link_to [@authority, project]  do%>
-                  <%= content_tag :h5, "#{project.title}"%>
-                  <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "img-fit"%>
-                  <% end %>
-              <% end %>
-          </div>
-          <% end %>
-
-        </div>
-        <a class="left carousel-control" href="#myCarousel4" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-        <a class="right carousel-control" href="#myCarousel4" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+    <section id="prj" class='indexpage row'>
+    <h3 class="text-center animated fadeInUp">Projects</h3>
+      <div>
+        <%= render @projects %>
       </div>
+      <div class="col-md-12">
+        <%= paginate @projects, remote: true %>
       </div>
     </section>
 

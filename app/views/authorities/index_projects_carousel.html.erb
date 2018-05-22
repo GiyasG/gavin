@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+    <section class="row">
+    <div class='animated bounceInDown'>
+      <%= image_tag url_for(:controller => "photos", :action => "show_authority", :authority_id=>@authority.id, :id=>@authority.photos[0][:id]), class: "col-md-2"%>
+      <div class="col-md-10">
+      <%= content_tag :h4, "#{@authority.title} #{@authority.name} #{@authority.surname}", class: "col-md-12"%>
+      <%= content_tag :h5, "#{@authority.position}", class:"col-md-12"%>
+      </div>
+      <div class="col-md-12 text-justify">
+        <%= simple_format("#{@authority.about}")%>
+      </div>
+    </div>
+    </section>
+
+    <section id="phts" class="row">
+    <div class="carousel_wrap">
+    <%= render 'layouts/carousel_photos' %>
+    </div>
+    </section>
+
+    <section id="curt" class="row">
+        <div class='row'>
+          <%= render 'projects/current' %>
+        </div>
+    </section>
+
+    <section id="prj" class="row">
+      <h3 class="text-center animated fadeInUp">Projects</h3>
+      <div class="col-md-10 col-md-offset-1">
+      <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel4">
+        <div id="crl_inner" class="carousel-inner">
+
+          <% @projects.each_with_index do |project, index| %>
+          <div class="item <%= 'active' if index == 0%>">
+             <%= content_tag :div, id: "cpt_#{project.id}", class: "col-xs-12 col-sm-6 col-md-2 text-center well-br" do %>
+                  <%= link_to [@authority, project]  do%>
+                  <%= content_tag :h5, "#{project.title}"%>
+                  <%= image_tag url_for(:controller => "photos", :action => "show_project", :project_id=>project.id), class: "img-fit"%>
+                  <% end %>
+              <% end %>
+          </div>
+          <% end %>
+
+        </div>
+        <a class="left carousel-control" href="#myCarousel4" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+        <a class="right carousel-control" href="#myCarousel4" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+      </div>
+      </div>
+    </section>
+
+
+    <section id="prj" class='indexpage row'>
+    <h3 class="text-center animated fadeInUp">Papers</h3>
+        <%= render @projects %>
+        <%= will_paginate @projects %>
+    </section>
+
+
+    <section id="ppr" class='indexpage row'>
+    <h3 class="text-center animated fadeInUp">Papers</h3>
+      <div class='row'>
+        <%= render @papers %>
+      </div>
+    </section>
+
+    <section id="cnts" class='row text-center'>
+    <h4 class="animated fadeInUp">Contact</h4>
+    <%= render @contacts %>
+
+  </section>
