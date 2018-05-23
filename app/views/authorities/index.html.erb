@@ -26,20 +26,23 @@
     </section>
 
 
-    <section id="prj" class='indexpage row'>
+    <section class='indexpage row'>
     <h3 class="text-center animated fadeInUp">Projects</h3>
-      <div>
+      <div id="prj">
         <%= render @projects %>
       </div>
-      <div class="col-md-12">
+      <div id="prjinator" class="col-md-12 text-center">
         <%= paginate @projects, remote: true %>
       </div>
     </section>
 
-    <section id="ppr" class='indexpage row'>
+    <section class='indexpage row'>
     <h3 class="text-center animated fadeInUp">Papers</h3>
-      <div class='row'>
+      <div id="ppr">
         <%= render @papers %>
+      </div>
+      <div id="pprinator" class="col-md-12 text-center">
+        <%= paginate @papers, remote: true %>
       </div>
     </section>
 

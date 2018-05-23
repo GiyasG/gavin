@@ -1,0 +1,11 @@
+  $(".pagination a").on("click",
+                    function(e){
+                    var aaa = $("#prjinator").prev()[0];
+                       console.log($(aaa).attr("id"));
+                    });
+
+$("#prj").html("<%= escape_javascript render(@projects) %>")
+$("#prjinator").html("<%= escape_javascript(paginate(@projects, remote: true)) %>")
+
+$("#ppr").html("<%= escape_javascript render(@papers) %>")
+$("#pprinator").html("<%= escape_javascript(paginate(@papers, remote: true)) %>")

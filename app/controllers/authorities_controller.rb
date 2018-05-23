@@ -13,11 +13,15 @@ class AuthoritiesController < ApplicationController
     end
     # binding.pry
     @projects = @authority.projects.order(:title).page(params[:page] || 1).per(4)
-    @papers = @authority.papers
+    @papers = @authority.papers.order(:title).page(params[:page] || 1).per(4)
     @contacts = @authority.contacts
     @photos = Photo.no_ids.all
     @currents = @authority.projects.where("current = ?", true)
     # binding.pry
+      # respond_to do |format|
+      #   format.js
+      #   format.html
+      # end
   end
 
   # GET /authorities/1
