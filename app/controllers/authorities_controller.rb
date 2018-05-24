@@ -12,16 +12,31 @@ class AuthoritiesController < ApplicationController
       render '/authorities/new'
     end
     # binding.pry
-    @projects = @authority.projects.order(:title).page(params[:page] || 1).per(4)
-    @papers = @authority.papers.order(:title).page(params[:page] || 1).per(4)
+    @projects = @authority.projects #.order(:title).page(params[:page] || 1).per(4)
+    @papers = @authority.papers #.order(:title).page(params[:page] || 1).per(4)
     @contacts = @authority.contacts
     @photos = Photo.no_ids.all
     @currents = @authority.projects.where("current = ?", true)
+
+    @projs = Project.all.to_a
+    records_number  = @projs.count
+    records_per_page = 4
+    whole_pages =  records_number / 4
+    last_page = records_number  % 4
+    pages = whole_pages + last_page
+    @aprojects = []
+    if last_page > 0
+    	(1..pages-1).each do
+    		@aprojects << @projs.pop(records_per_page)
+    	end
+    		@aprojects << @projs.pop(last_page)
+    else
+    	(1..pages).each do
+    		@aprojects << @projs.pop(records_per_page)
+    	end
+    end
+
     # binding.pry
-      # respond_to do |format|
-      #   format.js
-      #   format.html
-      # end
   end
 
   # GET /authorities/1

@@ -29,10 +29,11 @@
     <section class='indexpage row'>
     <h3 class="text-center animated fadeInUp">Projects</h3>
       <div id="prj">
-        <%= render @projects %>
-      </div>
-      <div id="prjinator" class="col-md-12 text-center">
-        <%= paginate @projects, remote: true %>
+        <!-- render @projects -->
+
+        <% @aprojects.each do |project| %>
+        <%= render :partial => "projects/project", :collection => project, :as => :project %>
+        <% end %>
       </div>
     </section>
 
@@ -40,9 +41,6 @@
     <h3 class="text-center animated fadeInUp">Papers</h3>
       <div id="ppr">
         <%= render @papers %>
-      </div>
-      <div id="pprinator" class="col-md-12 text-center">
-        <%= paginate @papers, remote: true %>
       </div>
     </section>
 
