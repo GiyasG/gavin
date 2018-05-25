@@ -1,0 +1,12 @@
+<a href="#">
+       <span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<% (0...pages).each do |page| %>
+	 <!-- link_to page do  -->
+    <%= link_to next_project_path(page) do%>
+ 		 <%= content_tag :spam, "#{page+1}" %>
+    <% end %>
+<% end %>
+<a href="#">
+       <span class="glyphicon glyphicon-chevron-right"></span>
+</a>

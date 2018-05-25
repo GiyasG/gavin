@@ -26,14 +26,14 @@
     </section>
 
 
-    <section class='indexpage row'>
+    <section  id="prj" class='indexpage row'>
     <h3 class="text-center animated fadeInUp">Projects</h3>
-      <div id="prj">
+      <div>
         <!-- render @projects -->
-
-        <% @aprojects.each do |project| %>
-        <%= render :partial => "projects/project", :collection => project, :as => :project %>
-        <% end %>
+        <%= render :partial => "projects/project", :collection => @aprojects[0], :as => :project %>
+      </div>
+      <div class="putinline text-center">
+      <%= render :partial => "projects/project_pages", locals: {pages: @aprojects.count } %>
       </div>
     </section>
 

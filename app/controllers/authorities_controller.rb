@@ -27,12 +27,12 @@ class AuthoritiesController < ApplicationController
     @aprojects = []
     if last_page > 0
     	(1..pages-1).each do
-    		@aprojects << @projs.pop(records_per_page)
+    		@aprojects << @projs.shift(records_per_page)
     	end
-    		@aprojects << @projs.pop(last_page)
+    		@aprojects << @projs.shift(last_page)
     else
     	(1..pages).each do
-    		@aprojects << @projs.pop(records_per_page)
+    		@aprojects << @projs.shift(records_per_page)
     	end
     end
 
@@ -41,6 +41,27 @@ class AuthoritiesController < ApplicationController
 
   # GET /authorities/1
   # GET /authorities/1.json
+
+  def aproject
+    @projs = Project.all.to_a
+    records_number  = @projs.count
+    records_per_page = 4
+    whole_pages =  records_number / 4
+    last_page = records_number  % 4
+    pages = whole_pages + last_page
+    @aprojects = []
+    if last_page > 0
+    	(1..pages-1).each do
+    		@aprojects << @projs.shift(records_per_page)
+    	end
+    		@aprojects << @projs.shift(last_page)
+    else
+    	(1..pages).each do
+    		@aprojects << @projs.shift(records_per_page)
+    	end
+    end
+  end
+
   def show
   end
 
