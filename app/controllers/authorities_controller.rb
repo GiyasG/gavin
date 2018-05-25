@@ -60,6 +60,11 @@ class AuthoritiesController < ApplicationController
     		@aprojects << @projs.shift(records_per_page)
     	end
     end
+        #
+        # respond_to do |format|
+        #   format.js {render layout: false}
+        # end
+
   end
 
   def show

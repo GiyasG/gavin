@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   match 'show_paper/:paper_id' => 'photos#show_paper', as: :show_paper, via: [:get]
   match 'show_team/:team_id' => 'photos#show_team', as: :show_team, via: [:get]
 
-  match 'next_project/:page' => 'authorities#index', as: :next_project, via: [:get]
+  match 'next_project/:page' => 'authorities#aproject', as: :next_project, format: "js", via: [:get]
 
 
   get '/search' => "search#index", :as => :search
