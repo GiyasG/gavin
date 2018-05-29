@@ -1,0 +1,8 @@
+<% paper.each do |papr| %>
+    <div class="col-md-3 col-sm-6 text-center">
+      <%= link_to [@authority, papr] do%>
+      <%= content_tag :h5, "#{papr.title}"%>
+      <%= image_tag url_for(:controller => "photos", :action => "show_paper", :paper_id=>papr.id), class: "img-fit img-rounded"%>
+      <% end %>
+    </div>
+<% end %>

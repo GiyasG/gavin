@@ -1,6 +1,7 @@
 class AuthoritiesController < ApplicationController
   before_action :ensure_login, :set_authority, only: [:show, :new, :edit, :update, :destroy]
   before_filter :edit_authority_params, :only => [:update]
+  # protect_from_forgery except: :index
 
   # GET /authorities
   # GET /authorities.json
@@ -12,8 +13,8 @@ class AuthoritiesController < ApplicationController
       render '/authorities/new'
     end
     # binding.pry
-    @projects = @authority.projects #.order(:title).page(params[:page] || 1).per(4)
-    @papers = @authority.papers #.order(:title).page(params[:page] || 1).per(4)
+    # @projects = @authority.projects #.order(:title).page(params[:page] || 1).per(4)
+    # @papers = @authority.papers #.order(:title).page(params[:page] || 1).per(4)
     @contacts = @authority.contacts
     @photos = Photo.no_ids.all
     @currents = @authority.projects.where("current = ?", true)
@@ -21,10 +22,11 @@ class AuthoritiesController < ApplicationController
     @projs = Project.all.to_a
     records_number  = @projs.count
     records_per_page = 4
-    whole_pages =  records_number / 4
-    last_page = records_number  % 4
+    whole_pages =  records_number / records_per_page
+    last_page = records_number  % records_per_page
     pages = whole_pages + last_page
     @aprojects = []
+    @c_page = 0
     if last_page > 0
     	(1..pages-1).each do
     		@aprojects << @projs.shift(records_per_page)
@@ -37,19 +39,41 @@ class AuthoritiesController < ApplicationController
     end
 
     # binding.pry
+    @paprs = Paper.all.to_a
+    records_number  = @paprs.count
+    records_per_page = 4
+    whole_pages =  records_number / records_per_page
+    last_page = records_number  % records_per_page
+    pages = whole_pages + last_page
+    @apapers = []
+    @c_page = 0
+    if last_page > 0
+    	(1..pages-1).each do
+    		@apapers << @paprs.shift(records_per_page)
+    	end
+    		@apapers << @paprs.shift(last_page)
+    else
+    	(1..pages).each do
+    		@apapers << @paprs.shift(records_per_page)
+    	end
+    end
+
+
   end
 
   # GET /authorities/1
   # GET /authorities/1.json
 
   def aproject
+    @authority = Authority.first
     @projs = Project.all.to_a
     records_number  = @projs.count
     records_per_page = 4
-    whole_pages =  records_number / 4
-    last_page = records_number  % 4
+    whole_pages =  records_number / records_per_page
+    last_page = records_number  % records_per_page
     pages = whole_pages + last_page
     @aprojects = []
+    @c_page = params[:page]
     if last_page > 0
     	(1..pages-1).each do
     		@aprojects << @projs.shift(records_per_page)
@@ -60,12 +84,30 @@ class AuthoritiesController < ApplicationController
     		@aprojects << @projs.shift(records_per_page)
     	end
     end
-        #
-        # respond_to do |format|
-        #   format.js {render layout: false}
-        # end
-
+    # binding.pry
   end
+
+def apaper
+  @authority = Authority.first
+  @paprs = Paper.all.to_a
+  records_number  = @paprs.count
+  records_per_page = 4
+  whole_pages =  records_number / records_per_page
+  last_page = records_number  % records_per_page
+  pages = whole_pages + last_page
+  @apapers = []
+  @c_page = params[:page]
+  if last_page > 0
+    (1..pages-1).each do
+      @apapers << @paprs.shift(records_per_page)
+    end
+      @apapers << @paprs.shift(last_page)
+  else
+    (1..pages).each do
+      @apapers << @paprs.shift(records_per_page)
+    end
+  end
+end
 
   def show
   end

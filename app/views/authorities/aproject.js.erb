@@ -1,1 +1,2 @@
-$("#proj").html("<%= escape_javascript(render partial: 'projects/project', locals: {project: @aprojects[0]}) %>");
+$("#proj_page").html("<%= escape_javascript(render partial: 'projects/project_pages', locals:{current_page: @c_page.to_i, pages:@aprojects.count }) %>");
+$("#proj").html("<%= escape_javascript(render partial: 'projects/project_next', locals: {project: @aprojects[params[:page].to_i]}) %>");

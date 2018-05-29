@@ -32,15 +32,18 @@
         <!-- render @projects -->
         <%= render :partial => "projects/project", :collection => @aprojects[0], :as => :project %>
       </div>
-      <div class="putinline text-center">
-      <%= render :partial => "projects/project_pages", locals: {pages: @aprojects.count } %>
+      <div  id="proj_page" class="putinline text-center">
+      <%= render :partial => "projects/project_pages", locals: {current_page: @c_page, pages: @aprojects.count } %>
       </div>
     </section>
 
     <section class='indexpage row'>
     <h3 class="text-center animated fadeInUp">Papers</h3>
-      <div id="ppr">
-        <%= render @papers %>
+      <div id="papr">
+        <%= render :partial => "papers/paper", :collection => @apapers[0], :as => :paper %>
+      </div>
+      <div id="papr_page" class="putinline text-center">
+      <%= render :partial => "papers/paper_pages", locals: {current_page: @c_page, pages: @apapers.count } %>
       </div>
     </section>
 

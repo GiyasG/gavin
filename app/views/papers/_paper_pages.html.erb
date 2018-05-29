@@ -1,13 +1,13 @@
 <% if (current_page > 0) %>
- <%= link_to next_project_path(current_page-1), remote: true do%>
+ <%= link_to next_paper_path(current_page-1), remote: true do%>
    <span class="glyphicon glyphicon-chevron-left"></span>
  <% end %>
 <% end %>
 
-<%= content_tag :spam, "Pages count: #{pages}" %>
+     <%= content_tag :spam, "Pages count: #{pages}" %>
 
 <% if (current_page < pages-1) %>
- <%= link_to next_project_path(current_page+1), remote: true do%>
+ <%= link_to next_paper_path(current_page+1), remote: true do%>
    <span class="glyphicon glyphicon-chevron-right"></span>
  <% end %>
 <% end %>

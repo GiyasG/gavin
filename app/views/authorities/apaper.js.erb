@@ -1,0 +1,2 @@
+$("#papr_page").html("<%= escape_javascript(render partial: 'papers/paper_pages', locals:{current_page: @c_page.to_i, pages:@apapers.count }) %>");
+$("#papr").html("<%= escape_javascript(render partial: 'papers/paper_next', locals: {paper:@apapers[params[:page].to_i]}) %>");
