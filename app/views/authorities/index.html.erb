@@ -32,9 +32,11 @@
         <!-- render @projects -->
         <%= render :partial => "projects/project", :collection => @aprojects[0], :as => :project %>
       </div>
+    <% if (@aprojects.count > 1)   %>
       <div  id="proj_page" class="putinline text-center">
       <%= render :partial => "projects/project_pages", locals: {current_page: @c_page, pages: @aprojects.count } %>
       </div>
+    <% end %>
     </section>
 
     <section class='indexpage row'>
@@ -42,9 +44,11 @@
       <div id="papr">
         <%= render :partial => "papers/paper", :collection => @apapers[0], :as => :paper %>
       </div>
+    <% if (@apapers.count > 1)   %>
       <div id="papr_page" class="putinline text-center">
       <%= render :partial => "papers/paper_pages", locals: {current_page: @c_page, pages: @apapers.count } %>
       </div>
+    <% end %>
     </section>
 
     <section id="cnts" class='row text-center'>
