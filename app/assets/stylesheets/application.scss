@@ -21,6 +21,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Arial";
 }
 
 body {
@@ -335,3 +336,7 @@ width: 90%;
     }
 }
 /* ---------------------- */
+
+#proj_page a, #papr_page a, #proj_page button, #papr_page button {
+  margin: 5px;
+}

@@ -1,13 +1,22 @@
 <% if (current_page > 0) %>
- <%= link_to next_paper_path(current_page-1), remote: true do%>
+ <%= link_to next_paper_path(current_page-1), class: "btn btn-success", remote: true do%>
    <span class="glyphicon glyphicon-chevron-left"></span>
  <% end %>
+<% else %>
+<%= button_tag class: "btn btn-success", disabled: true do%>
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  <% end %>
 <% end %>
 
-     <%= content_tag :spam, "Pages count: #{pages}" %>
+<%= content_tag :spam, "Total pages: #{pages}", class: "label label-info" %>
+<%= content_tag :spam, "Current page: #{current_page+1}", class: "label label-info" %>
 
 <% if (current_page < pages-1) %>
- <%= link_to next_paper_path(current_page+1), remote: true do%>
+ <%= link_to next_paper_path(current_page+1), class: "btn btn-success", remote: true do%>
    <span class="glyphicon glyphicon-chevron-right"></span>
  <% end %>
+<% else %>
+<%= button_tag class: "btn btn-success", disabled: true do%>
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  <% end %>
 <% end %>
