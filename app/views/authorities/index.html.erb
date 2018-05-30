@@ -33,7 +33,7 @@
         <%= render :partial => "projects/project", :collection => @aprojects[0], :as => :project %>
       </div>
     <% if (@aprojects[1].present?) %>
-      <div  id="proj_page" class="putinline text-center">
+      <div  id="proj_page" class="ptline text-center">
       <%= render :partial => "projects/project_pages", locals: {current_page: @c_page, pages: @aprojects.count } %>
       </div>
     <% end %>
@@ -45,7 +45,7 @@
         <%= render :partial => "papers/paper", :collection => @apapers[0], :as => :paper %>
       </div>
       <% if (@apapers[1].present?) %>
-      <div id="papr_page" class="putinline text-center">
+      <div id="papr_page" class="ptline text-center">
       <%= render :partial => "papers/paper_pages", locals: {current_page: @c_page, pages: @apapers.count } %>
       </div>
     <% end %>

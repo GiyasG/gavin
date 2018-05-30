@@ -11,7 +11,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'mini_magick'
 gem 'validates_email_format_of'
-# gem 'kaminari'
 gem 'animate-rails'
 gem 'bcrypt', '~> 3.1.7'
 
