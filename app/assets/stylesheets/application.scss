@@ -10,10 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  *= require bootstrap
  *= require animate
+ *= require_tree .
  */
 
 
@@ -161,6 +161,14 @@ form label {
   // margin-bottom: 10px;
   width:auto;
   height: 115px;
+}
+
+.img-tiny {
+  margin: 10px;
+  // margin-top: 10px;
+  // margin-bottom: 10px;
+  width:auto;
+  height: 70px;
 }
 
 .photo_show {

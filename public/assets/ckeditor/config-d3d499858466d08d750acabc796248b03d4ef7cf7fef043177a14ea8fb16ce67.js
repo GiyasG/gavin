@@ -1,1 +1,0 @@
-CKEDITOR.editorConfig=function(o){o.enterMode=CKEDITOR.ENTER_BR,o.autoParagraph=!1};

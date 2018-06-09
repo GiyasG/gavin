@@ -22,7 +22,9 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Data edit
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Main page", authority_path(Authority.first)%></li>
+            <% if Authority.first.present? %>
+              <li><%= link_to "Main page", authority_path(Authority.first)%></li>
+            <% end %>
             <li><%= link_to "Photos", photos_index_path%></li>
             <li><%= link_to "Team", view_teams_path%></li>
           </ul>

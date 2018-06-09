@@ -16,7 +16,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -26,6 +25,8 @@ group :production do
 gem 'rails_12factor'
 end
 
+gem 'web-console', group: :development
+
 gem 'pg', '~>0.19', '>=0.19.0'
-gem 'ckeditor', '4.1.3'
+gem 'ckeditor'
 gem 'paperclip'
