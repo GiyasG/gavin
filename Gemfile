@@ -30,3 +30,4 @@ gem 'web-console', group: :development
 gem 'pg', '~>0.19', '>=0.19.0'
 gem 'ckeditor'
 gem 'paperclip'
+gem 'geokit-rails'

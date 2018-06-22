@@ -47,4 +47,14 @@ class ApplicationController < ActionController::Base
   def logged_in?
     session[:editor_id]
   end
+
+  def remote_ip
+    if request.remote_ip == '::1'
+      # Hard coded remote address
+      '82.204.202.86'
+    else
+      request.remote_ip
+    end
+  end
+
 end

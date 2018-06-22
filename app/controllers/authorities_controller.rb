@@ -6,6 +6,8 @@ class AuthoritiesController < ApplicationController
   # GET /authorities
   # GET /authorities.json
   def index
+    @client_ip = remote_ip()
+    @client_country = Geokit::Geocoders::IpGeocoder.geocode(@client_ip).country
     @authority = Authority.first
     if @authority.nil?
       @authority = Authority.new
@@ -16,6 +18,7 @@ class AuthoritiesController < ApplicationController
     # @projects = @authority.projects #.order(:title).page(params[:page] || 1).per(4)
     # @papers = @authority.papers #.order(:title).page(params[:page] || 1).per(4)
     @contacts = @authority.contacts
+    # @client_address = Geokit::Geocoders::GoogleGeocoder.geocode @contacts[0].postcode    # binding.pry
     @photos = Photo.no_ids.all
     @currents = @authority.projects.where("current = ?", true)
 
